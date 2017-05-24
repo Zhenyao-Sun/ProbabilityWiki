@@ -1,4 +1,5 @@
 %%%----Versions-----------------------------
+%---2017/4/21 by Yanxia-----------------
 %---2017/4/19 by Renming-----------------
 %---2017/4/18 by Yanxia---------------
 %---2017/4/16 by Zhenyao---------------
@@ -75,7 +76,9 @@
 \newcommand{\bY}{\mathbf Y}\newcommand{\bbY}{\mathbb Y}\newcommand{\cY}{\mathcal Y}
 \newcommand{\bZ}{\mathbf Z}\newcommand{\bbZ}{\mathbb Z}\newcommand{\cZ}{\mathcal Z}
 %%%---------Top matter----------------
-\title[A 2-spine decomposition and Yaglom's theorem]{\large A 2-spine Decomposition on the Critical Galton-Watson Tree and a Probabilistic Proof of Yaglom's Theorem}
+\title[A 2-spine decomposition and Yaglom's theorem]
+%{\large A 2-spine Decomposition on the Critical Galton-Watson Tree and a Probabilistic Proof of Yaglom's Theorem}
+{\large A 2-spine Decomposition of the Critical Galton-Watson Tree and a Probabilistic Proof of Yaglom's Theorem}
 %---------------------
 \author{Yan-Xia Ren}
 \address{
@@ -105,9 +108,12 @@
 	Department of Mathematics\\
 	University of Illinois at Urbana-Champaign\\
 	Urbana, IL 61801}
-%\email{zhenyao.sun@gmail.com}
 \email{zhenyao@illinois.edu}
-\thanks{The third author is supported by the China Scholarship Council.}
+\thanks{The third author is supported by the China Scholarship Council.
+%\new added
+Corresponding author.
+%end new
+}
 %----------------------------
 \keywords{
 	Galton-Watson process, Galton-Watson tree, spine decomposition, Yaglom's theorem, martingale change of measure}
@@ -147,19 +153,15 @@
 	<
 		\infty.
 \end{equation}
-%new
 For simplicity, we will call a Galton-Watson process with offspring distribution $\mu$
-a $\mu$-Galton-Watson process.
-%end new
-	It is well known that
+a $\mu$-Galton-Watson process. 	It is well known that
 \begin{thm}[\cite{kesten1966galton}]
 \label{thm:kesten}
-%	For a Galton-Watson process $(Z_n)_{n\ge 0}$ with offspring distribution $\mu$ satisfying \eqref{eq:mean} and \eqref{eq:variance}, we have
 For a $\mu$-Galton-Watson process satisfying \eqref{eq:mean} and \eqref{eq:variance}, we have
 \begin{enumerate}
 \item
 \label{thm:kolmogorov}
-	$\displaystyle \lim_{n \to \infty} n \bP \set{Z_n>0} = \frac{2}{\sigma^2},$ %and
+	$\displaystyle \lim_{n \to \infty} n \bP \set{Z_n>0} = \frac{2}{\sigma^2},$ 
 \item
 \label{thm:yaglom}
 	$\displaystyle	\law\expr{\frac{Z_n}{n}\bigg| Z_n>0}\tolaw Y \ \text{as }n\to\infty,$
@@ -168,24 +170,20 @@ For a $\mu$-Galton-Watson process satisfying \eqref{eq:mean} and \eqref{eq:varia
 \end{thm}
 \par
 	Under a third moment assumption, assertions \eqref{thm:kolmogorov} and \eqref{thm:yaglom} of Theorem \ref{thm:kesten} are due to \cite{kolmogorov1938losung} and \cite{yaglom1947certain} respectively.
-%	Assertion \eqref{thm:yaglom} of Theorem \ref{thm:kesten} 
-Theorem \ref{thm:kesten}(2)
-	is usually called Yaglom's theorem.
-	For probabilistic proofs of the above results, we refer our readers to \cite{lyons1995conceptual}, \cite{geiger1999elementary} and \cite{geiger2000new}.
+Theorem \ref{thm:kesten}(2) is usually called Yaglom's theorem.
+	For probabilistic proofs of the above results, we refer our readers to 
+%\cite{lyons1995conceptual}, \cite{geiger1999elementary} and \cite{geiger2000new}.
+\cite{geiger1999elementary}, \cite{geiger2000new} and \cite{lyons1995conceptual}.
 \par
-	In \cite{lyons1995conceptual}, Lyons, Pemantle and Peres gave a 
-%conceptual proof of Theorem \ref{thm:kesten} 
-probabilistic proof of Theorem \ref{thm:kesten} 
-%using the size-biased Galton-Watson tree.
-using the size-biased $\mu$-Galton-Watson tree.
+	In \cite{lyons1995conceptual}, Lyons, Pemantle and Peres gave a
+probabilistic proof of Theorem \ref{thm:kesten} using the size-biased $\mu$-Galton-Watson tree.
 	Denote by $\dot L$ a random variable with the \defn{size-biased distribution} of $L$, that is, for any bounded Borel function $f$,
 \begin{equation*}
 		\expct\brac{f\expr{\dot L}}
 	=
 		\frac{\expct\brac{Lf(L)}}{\expct\brac{L}}.
 \end{equation*}
-%The celebrated \defn{size-biased Galton-Watson tree} is 
-The celebrated \defn{size-biased $\mu$-Galton-Watson tree} is 
+The celebrated \defn{size-biased $\mu$-Galton-Watson tree} is
 then constructed as follows:
 \begin{itemize}
 \item
@@ -198,9 +196,7 @@ then constructed as follows:
 	The evolution goes on.
 \end{itemize}
 \par
-	Notice that the marked particles form a descending family line which will be 
-	%referred as the \defn{spine}.
-	referred to as the \defn{spine}.
+	Notice that the marked particles form a descending family line which will be referred to as the \defn{spine}.
 	Define $\dot Z_n$ as the population of the $n$th generation in the size-biased tree.
 	It is proved in \cite{lyons1995conceptual} that the process $(\dot Z_n)_{n\ge 0}$ is a martingale transform of the process $(Z_n)_{n\ge 0}$ using the martingale $(Z_n)_{n\ge 0}.$
 	That is, for any generation number $n$ and any bounded Borel function $g$ on
@@ -212,17 +208,18 @@ then constructed as follows:
                 \frac{\expct\brac{Z_n g\expr{Z_1,\dots, Z_n}}}{\expct\brac{Z_n}}.
 \end{equation}
 \par
-%It is  nature to consider concept proofs of analogous results for more general critical branching processes. Vatutin and  Dyakonova \cite{VD} gave a probabilistic proof of Theorem 1(1) for multitype critical branching processes. Athreya and Ney \cite{AN} proved the Yaglom's theorem under the finite second moment condition using analytic method, see \cite[Section V.5]{AN}. As we know the probabilistic proof  of Yaglom's theorem for multitype critical branching processes does not appear to have been previously studied in the literature. We find that the ideas of  probabilistic proofs in \cite{lyons1995conceptual} and \cite{geiger2000new} for monotype branching are not easy to be generalized to general models, such as multitype  branching processes, branching Hunt processes and superprocesses. In this note we will give a new probabilistic proof of Theorem 1(2), and we hope this new proof can be generalized to more general measure-valued Markov processes in future work.
 It is natural to consider probabilistic proofs of analogous results for more general
 critical branching processes. Vatutin and  Dyakonova \cite{VD} gave a probabilistic proof of Theorem \ref{thm:kesten}(1) for multitype critical branching processes.
-As far as we know, there is no probabilistic proof of Yaglom's theorem for 
+As far as we know, there is no probabilistic proof of Yaglom's theorem for
 multitype critical branching processes. It seems that it is difficult to adapt
-the probabilistic proofs in \cite{lyons1995conceptual} and \cite{geiger2000new} for monotype branching processes to more general models, such as multitype  
-branching processes, branching Hunt processes and superprocesses. 
+the probabilistic proofs in 
+%\cite{lyons1995conceptual} and \cite{geiger2000new} 
+\cite{geiger2000new} and \cite{lyons1995conceptual} 
+for monotype branching processes to more general models, such as multitype
+branching processes, branching Hunt processes and superprocesses.
 In this note we will give a new probabilistic proof of Theorem \ref{thm:kesten}(2), and we hope this new proof can be generalized to more general measure-valued Markov processes in future work.
 
-%Now we first present a $k(k-1)$-type size-biased Galton-Watson tree equipped 
-We first present a $k(k-1)$-type size-biased $\mu$-Galton-Watson tree equipped 
+We first present a $k(k-1)$-type size-biased $\mu$-Galton-Watson tree equipped
 with a two-spine skeleton.
 	Denote by $\ddot L$ a random variable with the \defn{$k(k-1)$-type size-biased distribution} of $L$, that is, for any
 		bounded function $f$ on $\bbN_0$,
@@ -252,10 +249,8 @@ with a two-spine skeleton.
 	If we track all the marked particles, it is clear that they form a descending family line which splits into two separate lines after generation $K_n$.
 	In other words, the family tree of all the marked particles can be considered as a \defn{two-spine skeleton} with $K_n$ as the last generation where the two spines are together.
 \par	
-	For any $0\le m \le n$, denote by $\ddot Z_m^{(n)}$ the population of the 
-	$m$th generation in the $k(k-1)$-type size-biased 
-%	tree with height $n$.
-$\mu$-Galton-Watson tree with height $n$.
+	For any $0\le m \le n$, denote by $\ddot Z_m^{(n)}$ the population of the
+	$m$th generation in the $k(k-1)$-type size-biased $\mu$-Galton-Watson tree with height $n$.
 	The main reason for proposing such a model is that the process $(\ddot Z_m^{(n)})_{0\le m\le n}$ can be obtained from the process $(Z_m)_{0\le m\le n}$ by a change of measure via the random variable $Z_n(Z_n-1)$.
 	This is made precise in the result below which will be proved in Section \ref{sec:spacesandmeasures}.
 \begin{thm}
@@ -263,29 +258,25 @@ $\mu$-Galton-Watson tree with height $n$.
 	Let $(Z_m)_{m\ge 0}$ be a $\mu$-Galton-Watson process and
 		$(\ddot Z_m^{(n)})_{0\le m\le n}$
 	be the population of a $k(k-1)$-type size-biased $\mu$-Galton-Watson tree with height $n$.
-%Suppose that the offspring distribution $\mu$ satisfies \eqref{eq:mean} and \eqref{eq:variance}. 
-Suppose that $\mu$ satisfies \eqref{eq:mean} and \eqref{eq:variance}. 
+Suppose that $\mu$ satisfies \eqref{eq:mean} and \eqref{eq:variance}.
 Then, for any bounded Borel function $g$ on $\bbN^{n}_0$,
 \begin{equation*}
 				 \prob\brac{g\expr{\ddot Z_1^{(n)},\dots,\ddot Z_n^{(n)}}}
 	=
-				 \frac{\prob\brac{Z_n(Z_n-1) g\expr{Z_1,\dots, Z_n}}}{\prob\brac{Z_n(Z_n-1)}}.			%.
+				 \frac{\prob\brac{Z_n(Z_n-1) g\expr{Z_1,\dots, Z_n}}}{\prob\brac{Z_n(Z_n-1)}}.			
 \end{equation*}
 	\end{thm}
 \par
 	The idea of considering a branching particle system with more than one spine is not new.
-	A particle system with $k$ spines  was constructed in \cite{harris2015many} and used in the  many-to-few formula for the $k$th moment of branching Markov processes and branching random walks. Inspired by \cite{harris2015many}, we use a 
-%two-spine model is to characterize the $k(k-1)$-type size-biased branching process.
+	A particle system with $k$ spines  was constructed in \cite{harris2015many} and used in the  many-to-few formula for the $k$th moment of branching Markov processes and branching random walks. Inspired by \cite{harris2015many}, we use a
 two-spine model to characterize the $k(k-1)$-type size-biased branching process.
-We will give a new spine decomposition, see \eqref{eq:rawtwospinedecomposition} 
-%below, and give a new probabilistic proof of Theorem 1(2).
-below, and then use this decomposition to give a new probabilistic proof of 
+We will give a new spine decomposition, see \eqref{eq:rawtwospinedecomposition}
+below, and then use this decomposition to give a new probabilistic proof of
 Theorem \ref{thm:kesten}(2).
 
 \subsection{Application}
-It was shown in \cite{lyons1995conceptual} that, for the size-biased 
-%Galton-Watson tree, the population of the particles off the spine 
-$\mu$-Galton-Watson tree, the population of the particles off the spine 
+It was shown in \cite{lyons1995conceptual} that, for the size-biased
+$\mu$-Galton-Watson tree, the population of the particles off the spine
 (i.e., unmarked particles) could be considered as a branching process with independent immigrations.
 	That is, besides the independent $\mu$-branching mechanism for each existing particles, an additional independent $(\dot L-1)$-distributed random number of particles will immigrate into the system at each generation $k\ge 1$.
 	Therefore, the number of off-spine particles in the $n$th generation, $\dot Z_n-1$, has a natural decomposition,
@@ -311,8 +302,7 @@ $\mu$-Galton-Watson tree, the population of the particles off the spine
 		\lambda \geq 0.
 \end{equation}
 \par
-	Analogously, we consider a natural decomposition of the population $\ddot Z_n^{(n)}$ according to the two-spine skeleton in the $k(k-1)$-type size-biased 
-%Galton-Watson tree. This decomposition leads us to another
+	Analogously, we consider a natural decomposition of the population $\ddot Z_n^{(n)}$ according to the two-spine skeleton in the $k(k-1)$-type size-biased
 $\mu$-Galton-Watson tree. This decomposition leads us to another
 	characterization of the distribution of $\dot Z_n$. This is made precise in the following result which will be proved in Section \ref{sec:spinesdecomposition}.
 \begin{prop}
@@ -365,8 +355,11 @@ $\mu$-Galton-Watson tree. This decomposition leads us to another
 		\sigma^2\int_0^1du\cdot\int_0^\lambda \cL_{\dot Y}(us)ds,
 	\quad\lambda \geq 0.
 \end{equation}
-	Solving \eqref{equation:exponential}, we get that $\dot Y$ has the size-biased distribution of $Y$.
-	In Section \ref{sec:anewproofofyaglomslaw}, we will give a new probabilistic proof of Yaglom's theorem using Proposition \ref{lem:twospinedecomposition}.
+	Solving \eqref{equation:exponential}, we get that $\dot Y$ has the size-biased distribution of $Y$
+%new added
+with $Y$ being an exponential random variable with mean $\frac{\sigma^2}{2}$.
+%end new
+In Section \ref{sec:anewproofofyaglomslaw}, we will give a new probabilistic proof of Yaglom's theorem using Proposition \ref{lem:twospinedecomposition}.
 \section{Trees and their decomposition}
 \label{sec:preliminary}
 \subsection{Spaces and measures}
@@ -401,7 +394,7 @@ $\mu$-Galton-Watson tree. This decomposition leads us to another
 \end{equation*}
 	A \defn{spine} $\spine$ on a  tree $\tree$ is defined as a sequence of particles
 		 $\{v^{(k)}:k=0,1,\dots,|\tree|\}\subset\tree$
-	such that $v^{(0)}=\emptyset$ and $\parent{v^{(k)}}=v^{(k-1)}$ for any 
+	such that $v^{(0)}=\emptyset$ and $\parent{v^{(k)}}=v^{(k-1)}$ for any
 	$k=1,\dots, |\tree|$.
 	In the case that $|\tree|=\infty$, we simply write $k=0,1,\dots$ as $k=0,1,\dots, |\tree|$.
 \par
@@ -436,11 +429,9 @@ $\mu$-Galton-Watson tree. This decomposition leads us to another
 	:=
 		\set{u_1\dots u_m\in \cU: 0\le m\le n, u_j\leq L_{u_1\dots u_{j-1}},\forall j=1,\dots,m}.
 \end{equation*}
-%	We refer to $T$ as a \defn{Galton-Watson tree with height no more than n} 
 We refer to $T$ as a \defn{$\mu$-Galton-Watson tree with height no more than n}
 	since its population
 		$(X_m(T))_{0\le m\le n}$
-%	is a Galton-Watson process stopped at generation $n$.
 is a $\mu$-Galton-Watson process stopped at generation $n$.
 	Define the \defn{$\mu$-Galton-Watson measure $\bG_n$} on $\bbT_{\leq n}$ as the law of random tree $T$. That is, for any $\tree\in\bbT_{\leq n}$,
 \begin{equation*}
@@ -457,9 +448,8 @@ is a $\mu$-Galton-Watson process stopped at generation $n$.
 	Define $\dot C$ as a random number which, conditioned on $\dot L$, is uniformly distributed on
 	$\{1,\dots,\dot L\}$.
 	Independent of $(L_u)_{u\in\cU}$, let $(\dot L_u,\dot C_u)_{u\in \cU}$ be a collection of independent copies of $(\dot L,\dot C)$, indexed by $\cU$.
-	We then use $(L_u)_{u\in\cU}$ and $(\dot L_u,\dot C_u)_{u\in\cU}$ as the building blocks to construct the size-biased 
-%	Galton-Watson tree $\dot T$ and its distinguishable spine $\dot V$ 
-$\mu$-Galton-Watson tree $\dot T$ and its distinguishable spine $\dot V$ 
+	We then use $(L_u)_{u\in\cU}$ and $(\dot L_u,\dot C_u)_{u\in\cU}$ as the building blocks to construct the size-biased
+$\mu$-Galton-Watson tree $\dot T$ and its distinguishable spine $\dot V$
 	following the steps described in Section \ref{sec:model}.
 	We use $L_u$ as the number of children of particle $u$ if $u$ is unmarked and use $\dot L_u$ if $u$ is marked.
 	In the latter case, we always set the $C_u$th child of $u$, i.e. particle $uC_u$, as the new marked particle.
@@ -497,8 +487,7 @@ $\mu$-Galton-Watson tree $\dot T$ and its distinguishable spine $\dot V$
 		\bG_n(\tree).
 \end{equation}
 \par	
-%	The \defn{size-biased Galton-Watson measure $\dot \bG_n$} on 
-	The \defn{size-biased $\mu$-Galton-Watson measure $\dot \bG_n$} on 
+	The \defn{size-biased $\mu$-Galton-Watson measure $\dot \bG_n$} on
 	$\bbT_{\leq n}$ is then defined as the law of the $\bbT_{\leq n}$-valued random element $\dot T$. That is, for any $\tree\in\bbT_{\leq n}$,
 \begin{equation}
 \label{eq:sizebiasedGWmeasure}
@@ -520,7 +509,6 @@ $\mu$-Galton-Watson tree $\dot T$ and its distinguishable spine $\dot V$
 \end{equation}
 \par
 	Equations \eqref{eq:treespinemeasure}, \eqref{eq:sizebiasedGWmeasure} and their consequence \eqref{eq:htransformation} were first obtained in \cite{lyons1995conceptual}.
-%	We recover them as a helpful analogy for understanding how the $k(k-1)$-type size-biased Galton-Watson tree can be represented.
 We use these equations to help us to understand how the $k(k-1)$-type size-biased $\mu$-Galton-Watson tree can be represented.
 \par	
 	Recall that $K_n$ is a random generation number uniformly distributed on
@@ -528,9 +516,8 @@ We use these equations to help us to understand how the $k(k-1)$-type size-biase
 	and $\ddot L$ is a random variable with the $k(k-1)$-type size-biased distribution of $L$.
 	Define $(\ddot C,\ddot C')$ as a random vector which, conditioned on $\ddot L$, is uniformly distributed on $\{(i,j)\in\bbN^2:1\leq i\neq j\leq \ddot L\}$.
 	Suppose that $(L_u)_{u\in\cU}, (\dot L_u,\dot C_u)_{u\in \cU}$, $(\ddot L,\ddot C,\ddot C')$ and $K_n$ are independent of each other.
-	We now use these elements to build the $k(k-1)$-type size-biased 
-%	Galton-Watson tree $\ddot T$ and 
-$\mu$-Galton-Watson tree $\ddot T$ and 
+	We now use these elements to build the $k(k-1)$-type size-biased
+$\mu$-Galton-Watson tree $\ddot T$ and
 	its two different distinguishable spines $\ddot V$ and $\ddot V'$ following the steps described in Section \ref{sec:model}.
 	Write $C_u:=\dot C_u\ind{|u|\neq K_n}+\ddot C\ind{|u|=K_n}$ and $C'_u:=\dot C_u\ind{|u|\neq K_n}+\ddot C'\ind{|u|=K_n}$.
 	We define the random spines $\ddot V$ and $\ddot V'$ as
@@ -551,7 +538,6 @@ $\mu$-Galton-Watson tree $\ddot T$ and
 \end{equation*}
 	where, for any $u\in\cU$, $L''_u:=L_u \ind{u\not\in \ddot V\cup\ddot V'}+\dot L_u \ind{u\in \ddot V\cup\ddot V',|u|\neq K_n}+\ddot L\ind{u\in \ddot V\cup\ddot V',|u|=K_n}$.
 \par
-%	We now consider the distribution of the random element 
 We now consider the distribution of
 	$(\ddot T,\ddot V,\ddot V')$. For any $(\tree,\spine,\spine')\in\ddot\bbT_n$, the event $\{(\ddot T,\ddot V,\ddot V')=(\tree,\spine,\spine')\}$ occurs if and only if:
 \begin{itemize}
@@ -565,23 +551,7 @@ We now consider the distribution of
         $(\ddot L,\ddot C,\ddot C')=(l_{v_1\dots v_{k_n}}(\tree),v_{k_n+1},v'_{k_n+1})$ for $v_1\dots v_{k_n}v_{k_n+1}\in\spine$ and $v_1\dots v_{k_n}v'_{k_n+1}\in\spine'$.
 \end{itemize}
 	Using this analysis, one can verify that
-%\begin{multline*}
 \begin{align*}
-%		\prob\left((\ddot T,\ddot V,\ddot V')=(\tree,\spine,\spine')\right)
-%	=
-%		\frac{1}{n}
-%	\cdot
-%	    \prod_{u\in \tree\setminus(\spine\cup \spine'):|u|<n} \mu(l_u(\tree))
-%	\cdot
-%    	\prod_{u\in \spine\cup \spine':k_n\neq|u|<n}l_u(\tree)
-%    	\mu(l_u(\tree))\frac{1}{l_u(\tree)}
-%    \\\cdot
-%		\prod_{u\in \spine\cup \spine':|u|=k_n}\frac{l_u(\tree)(l_u(\tree)-1)
-%		\mu(l_u(\tree))}{\sigma^2}\frac{1}{l_u(\tree)(l_u(\tree)-1)}
-%	=
-%		\frac{1}{n\sigma^2}
-%		\bG_n(\tree).
-%\end{multline*}
 &\prob\left((\ddot T,\ddot V,\ddot V')=(\tree,\spine,\spine')\right)\\
 &	= \frac{1}{n} \cdot
 	    \prod_{u\in \tree\setminus(\spine\cup \spine'):|u|<n} \mu(l_u(\tree))
@@ -597,9 +567,8 @@ We now consider the distribution of
 		\bG_n(\tree).
 \end{align*}
 \par	
-%	The \defn{$k(k-1)$-type size-biased Galton-Watson measure 
 The \defn{$k(k-1)$-type size-biased $\mu$-Galton-Watson measure
-	$\ddot \bG_n$} on 
+	$\ddot \bG_n$} on
 	$\bbT_{\leq n}$ is then defined as the law of the random element $\ddot T$. That is, for any $\tree\in\bbT_{\leq n}$,
 \begin{equation}
 \label{eq:k(k-1)typesizebiasedGWmeasure}
@@ -621,25 +590,20 @@ The \defn{$k(k-1)$-type size-biased $\mu$-Galton-Watson measure
 \end{split}
 \end{equation}
 
-%new
 We note in passing that, because of the way they are constructed, the measures
 $(\ddot \bG_n)_{n\ge 1}$ are not consistent, that is, the measure $\ddot \bG_n$ is
 not the restriction of $\ddot \bG_{n+1}$. This implies that the change of measure in
 Theorem \ref{thm:changeofmeasure} is not a martingale change of measure.
-%end new
 
 \medskip
 \begin{proof}[Proof of Theorem \ref{thm:changeofmeasure}]
-%	Since the process
 Since
-		$(X_m(\tree))_{0\le m\le n}$ under $\bG_n$ is exactly a 
-%		Galton-Watson process stopped at generation $n$, we have that
+		$(X_m(\tree))_{0\le m\le n}$ under $\bG_n$ is exactly a
 $\mu$-Galton-Watson process stopped at generation $n$, we have that
        $((X_m(\tree))_{0\le m\le n};\bG_n) \eqlaw (Z_m)_{0\le m\le n}.$
     Similarly, since the process
        $(X_m(\tree))_{0\le m\le n}$
-    under measure $\ddot \bG_n$ is constructed as the population of a 
-%    $k(k-1)$-type size-biased Galton-Watson tree with height $n$, we have that
+    under measure $\ddot \bG_n$ is constructed as the population of a
 $k(k-1)$-type size-biased $\mu$-Galton-Watson tree with height $n$, we have that
        $((X_m(\tree))_{0\le m\le n};\ddot \bG_n) \eqlaw (\ddot Z_m)_{0\le m\le n}.$
 	Equation \eqref{eq:k(k-1)typesizebiasedGWmeasure} can be rewritten in the following form
@@ -674,9 +638,8 @@ $k(k-1)$-type size-biased $\mu$-Galton-Watson tree with height $n$, we have that
 	    	    \set{u_1\dots u_j:j=0,\dots, n}
 \end{equation*}
 	as the \defn{descending family line from $\emptyset$ to $u$}.
-%Consider the size-biased Galton-Watson tree $(\dot T,\dot V)$.
 Consider the size-biased $\mu$-Galton-Watson tree $(\dot T,\dot V)$.
-	Since $|\dot V|=n$, we must have, for any particle $u\in\cU$, 
+	Since $|\dot V|=n$, we must have, for any particle $u\in\cU$,
 	$|\ancestor{u}\cap\dot V|\in\set{0,1,\dots,n}$.
 	Therefore, the particles in $\dot T$ can be separated into $n+1$ parts,
 \begin{equation*}
@@ -700,8 +663,7 @@ Consider the size-biased $\mu$-Galton-Watson tree $(\dot T,\dot V)$.
                \expr{\dot Z_n,(\dot Z_n^{(k+1)})_{0\le k\le n-1},1}.
 \end{equation*}
 \par
-	Similarly, consider the $k(k-1)$-type size-biased 
-%	Galton-Watson tree $(\ddot T,\ddot V,\ddot V')$.
+	Similarly, consider the $k(k-1)$-type size-biased
 $\mu$-Galton-Watson tree $(\ddot T,\ddot V,\ddot V')$.
 	Since $|\ddot V\cup\ddot V'|=n$, we must have, for any particle $u\in\cU$, $|\ancestor{u}\cap(\ddot V\cup \ddot V')|\in\{0,1,\dots,n\}$.
 	Therefore, the particles in $\ddot T$ can also be separated into $n+1$ parts,
@@ -727,7 +689,7 @@ $\mu$-Galton-Watson tree $(\ddot T,\ddot V,\ddot V')$.
 \end{equation}
 	Conditioning on $K_n=m$ with
 	$m\in\{0,\dots,n-1\}$,
-	we get from the construction of $(\ddot T,\ddot V,\ddot V')$ that%:
+	we get from the construction of $(\ddot T,\ddot V,\ddot V')$ that
 \begin{itemize}
 \item
         $X_n(\ddot A_k)\eqlaw Z'_{n-k-1}$ for any $0\le k\le m-1$,
@@ -817,7 +779,6 @@ $\mu$-Galton-Watson tree $(\ddot T,\ddot V,\ddot V')$.
 		\sigma^2\sum_{m=0}^{n-1}\int_0^\lambda \frac{\cL_{Z''_{m}}(s)}{\cL_{Z'_{m}}(s)}\cL_{Z_m}(s)ds.
 \end{equation*}
 \end{proof}
-%\section{A new proof of Yaglom's law}
 \section{A new proof of Yaglom's theorem}
 \label{sec:anewproofofyaglomslaw}
 \begin{lem}
@@ -956,10 +917,8 @@ $\mu$-Galton-Watson tree $(\ddot T,\ddot V,\ddot V')$.
 	Thus by Lemma \ref{lem:zeroinequality} we get that $M\equiv 0$.
 \par
 	The rest of the proof follows a standard tightness argument.
-%	For the Galton-Watson process $((Z_n)_{n\ge 0};\prob)$, 
-For the $\mu$-Galton-Watson process $((Z_n)_{n\ge 0};\prob)$, 
+For the $\mu$-Galton-Watson process $((Z_n)_{n\ge 0};\prob)$,
 	write $\prob_n^*[\cdot]:=\prob[\cdot|Z_n>0]$.
-%	By \eqref{thm:kolmogorov} of Theorem \ref{thm:kesten}, we have
 By Theorem \ref{thm:kesten}(1), we have
 \begin{equation*}
 	    \expct_n^*\brac{\frac{Z_n}{n}}
@@ -993,8 +952,7 @@ By Theorem \ref{thm:kesten}(1), we have
 		n\prob\set{Z_n>0}\expct_n^*\brac{\frac{Z_n}{n}e^{-\lambda\frac{Z_n}{n}}},
 		\quad \lambda > 0.
 	\end{equation}
-	Taking $n=n_k$ and letting $k\to\infty$, it follows from 
-%	\eqref{thm:kolmogorov} of Theorem \ref{thm:kesten},
+	Taking $n=n_k$ and letting $k\to\infty$, it follows from
 Theorem \ref{thm:kesten}(1),
 	\eqref{eq:subsequence} and \eqref{eq:sizebiasedandcondition} that,
 		for any $\lambda >0$,
@@ -1067,7 +1025,7 @@ Probab.} {\bf 2} (1974), 339--343.
 	Conceptual Proofs of $ L \log L $ criteria for mean behavior of branching processes.
 	{\it Ann. Probab.} \textbf{23} (1995), 1125--1138.
 
-\bibitem{VD} Vatutin, V. A. and Dyakonova,  E. E.: The survival probability of a critical mutitype Galton-Watson branching process. 
+\bibitem{VD} Vatutin, V. A. and Dyakonova,  E. E.: The survival probability of a critical mutitype Galton-Watson branching process.
 %Proceedings of the Seminar on Stability Problems for Stochastic Models, Part II (Nal\c{e}czow, 1999).
 {\it J.  Math. Sci.} \textbf{106} (2001), 2752--2759.
 
