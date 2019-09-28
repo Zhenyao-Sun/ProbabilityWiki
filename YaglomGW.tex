@@ -1,0 +1,802 @@
+%%%----Versions-----------------------------
+%---2017/4/6 by Zhenyao Sun-----------------
+%%%----Documentstyles-----------------------
+\documentclass[12pt]{amsart}
+\usepackage{geometry}
+\geometry{left=2.5cm,right=2.5cm,top=3cm,bottom=3cm}
+\usepackage[numbers]{natbib}
+\usepackage{hyperref}
+%%%----Environments------------------------
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{asp}[thm]{Assumption}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{ex}[thm]{Example}
+\numberwithin{equation}{section}
+\newcommand{\defn}[1]{{\em #1}}
+%%%----Notations---------------------------
+\newcommand{\ind}[1]{\mathbf 1_{#1}}
+\newcommand{\filtration}{\mathcal}
+\newcommand{\prob}{\mathbf P}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\expr}[1]{\left( #1 \right)}
+\newcommand{\brac}[1]{\left[ #1 \right]}
+\newcommand{\inner}[1]{\left\langle #1 \right\rangle}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\asure}{\text{-a.s. }}
+\newcommand{\aevery}{\text{-a.e. }}
+\newcommand{\suchthat}{\text{ s.t. }}
+\newcommand{\law}{\text{\rm Law}}
+\newcommand{\tolaw}{\stackrel{d}{\to}}
+\newcommand{\toas}{\stackrel{\text{a.s.}}{\to}}
+\newcommand{\uniformly}{\text{uniformly in }}
+\newcommand{\parent}[1]{\overleftarrow{#1}}
+\newcommand{\tree}{\mathbf t}
+\newcommand{\spine}{\mathbf v}
+\newcommand{\ancestor}[1]{[\emptyset,#1]}
+\newcommand{\expct}{\mathbf E}
+\newcommand{\eqlaw}{\overset{d}{=}}
+\newcommand{\while}{\text{ while }}
+%%%----Fonts--------------------------------
+\newcommand{\bA}{\mathbf A}\newcommand{\bbA}{\mathbb A}\newcommand{\cA}{\mathcal A}
+\newcommand{\bB}{\mathbf B}\newcommand{\bbB}{\mathbb B}\newcommand{\cB}{\mathcal B}
+\newcommand{\bC}{\mathbf C}\newcommand{\bbC}{\mathbb C}\newcommand{\cC}{\mathcal C}
+\newcommand{\bD}{\mathbf D}\newcommand{\bbD}{\mathbb D}\newcommand{\cD}{\mathcal D}
+\newcommand{\bE}{\mathbf E}\newcommand{\bbE}{\mathbb E}\newcommand{\cE}{\mathcal E}
+\newcommand{\bF}{\mathbf F}\newcommand{\bbF}{\mathbb F}\newcommand{\cF}{\mathcal F}
+\newcommand{\bG}{\mathbf G}\newcommand{\bbG}{\mathbb G}\newcommand{\cG}{\mathcal G}
+\newcommand{\bH}{\mathbf H}\newcommand{\bbH}{\mathbb H}\newcommand{\cH}{\mathcal H}
+\newcommand{\bI}{\mathbf I}\newcommand{\bbI}{\mathbb I}\newcommand{\cI}{\mathcal I}
+\newcommand{\bJ}{\mathbf J}\newcommand{\bbJ}{\mathbb J}\newcommand{\cJ}{\mathcal J}
+\newcommand{\bK}{\mathbf K}\newcommand{\bbK}{\mathbb K}\newcommand{\cK}{\mathcal K}
+\newcommand{\bL}{\mathbf L}\newcommand{\bbL}{\mathbb L}\newcommand{\cL}{\mathcal L}
+\newcommand{\bM}{\mathbf M}\newcommand{\bbM}{\mathbb M}\newcommand{\cM}{\mathcal M}
+\newcommand{\bN}{\mathbf N}\newcommand{\bbN}{\mathbb N}\newcommand{\cN}{\mathcal N}
+\newcommand{\bO}{\mathbf O}\newcommand{\bbO}{\mathbb O}\newcommand{\cO}{\mathcal O}
+\newcommand{\bP}{\mathbf P}\newcommand{\bbP}{\mathbb P}\newcommand{\cP}{\mathcal P}
+\newcommand{\bQ}{\mathbf Q}\newcommand{\bbQ}{\mathbb Q}\newcommand{\cQ}{\mathcal Q}
+\newcommand{\bR}{\mathbf R}\newcommand{\bbR}{\mathbb R}\newcommand{\cR}{\mathcal R}
+\newcommand{\bS}{\mathbf S}\newcommand{\bbS}{\mathbb S}\newcommand{\cS}{\mathcal S}
+\newcommand{\bT}{\mathbf T}\newcommand{\bbT}{\mathbb T}\newcommand{\cT}{\mathcal T}
+\newcommand{\bU}{\mathbf U}\newcommand{\bbU}{\mathbb U}\newcommand{\cU}{\mathcal U}
+\newcommand{\bV}{\mathbf V}\newcommand{\bbV}{\mathbb V}\newcommand{\cV}{\mathcal V}
+\newcommand{\bW}{\mathbf W}\newcommand{\bbW}{\mathbb W}\newcommand{\cW}{\mathcal W}
+\newcommand{\bX}{\mathbf X}\newcommand{\bbX}{\mathbb X}\newcommand{\cX}{\mathcal X}
+\newcommand{\bY}{\mathbf Y}\newcommand{\bbY}{\mathbb Y}\newcommand{\cY}{\mathcal Y}
+\newcommand{\bZ}{\mathbf Z}\newcommand{\bbZ}{\mathbb Z}\newcommand{\cZ}{\mathcal Z}
+%%%---------Top matter----------------
+\title{A Two-spines Decomposition on the Critical Galton-Watson Trees}
+%---------------------
+\author{Yanxia Ren}
+\address{
+	Yanxia Ren\\
+	School of Mathematical Sciences\\ 
+	Peking University, Beijing\\ 
+	P. R. China, 100871}
+\email{yxren@math.pku.edu.cn}
+\thanks{[Supporter for Y. Ren]}
+%--------------------
+\author{Renming Song}
+\address{
+	Renming Song\\
+	Department of Mathematics\\ 
+	University of Illinois at Urbana-Champaign\\ 
+	Urbana, IL 61801}
+\email{rsong@math.uiuc.edu}
+\thanks{[Supporter for R. Song]}
+%--------------------
+\author{Zhenyao Sun}
+\address{
+	Zhenyao Sun\\
+	School of Mathematical Sciences\\ 
+	Peking University\\ 
+	Beijing, P. R. China, 100871}
+\curraddr{
+	Department of Mathematics\\ 
+	University of Illinois at Urbana-Champaign\\ 
+	Urbana, IL 61801}
+\email{zhenyao.sun@gmail.com}
+\thanks{[Supporter for Z. Sun]}
+%----------------------------
+\keywords{[keywords]}
+\subjclass[2010]{[...]}
+\date{\today}
+%%%----Main-------------------------------
+\begin{document}
+\begin{abstract}
+	[abstract]
+\end{abstract}
+	\maketitle	
+\section{Introduction}
+\subsection{Model}
+\label{sec:model}
+	Consider the Galton-Watson branching process $(Z_n)_{n=0..}$ with offspring distribution $\mu$. Let $L$ be a random variable with law $\mu$. Assume that $Z_0=1$, and the process is critical in the sense that
+\begin{equation}
+\label{eq:mean}
+		m: 
+	= 
+		\expct [L] 
+	= 
+		\sum_{k=0}^\infty k \mu\set{k} 
+	= 1. 
+\end{equation}
+	Suppose $L$ has a non-degenerate finite variance 
+\begin{equation}
+\label{eq:variance}
+		0	
+	<	
+		\sigma^2 
+	:=
+		\sum_{k=0}^\infty  (k-1)^2 \mu\set{k} 
+	= 
+		\sum_{k=0}^\infty k(k-1) \mu\set{k} 
+	< 
+		\infty. 
+\end{equation}
+	It's well known that
+\begin{thm}[\citet*{kesten1966galton}]
+\label{thm:kesten}
+	For the Galton-Watson branching process $(Z_n)_{n=0..}$ with offspring distribution $\mu$ satisfying \eqref{eq:mean} and \eqref{eq:variance}, we have:
+\begin{enumerate}
+\item 
+\label{thm:kolmogorov}
+	Kolmogorov's estimate:
+\begin{equation*}
+		\lim_{n \to \infty} n \bP \set{Z_n>0}
+	=
+		\frac{2}{\sigma^2}.
+\end{equation*}
+\item
+\label{thm:yaglom}
+	Yaglom's law: 
+\begin{equation*}
+		\law\expr{\frac{Z_n}{n}\bigg| Z_n>0}
+	\tolaw 
+		Y 
+	, \expr{n\to\infty},
+\end{equation*}
+	where $Y$ is an exponentially distributed random variable with mean $\frac{\sigma^2}{2}$.
+\end{enumerate}
+\end{thm}
+\par
+	Under a third moment assumption, \eqref{thm:kolmogorov} and \eqref{thm:yaglom} of Theorem \ref{thm:kesten} are due to \citet*{kolmogorov1938losung} and \citet*{yaglom1947certain} respectively. For probabilistic proofs using different methods, we refer readers to \citet*{lyons1995conceptual} and \citet*{geiger1999elementary}, \citet*{geiger2000new}.
+\par
+	\citet*{lyons1995conceptual} gives a conceptual proof of Theorem \ref{thm:kesten} using the size-biased Galton-Watson tree. Denote by $\dot L$ a random variable with \defn{size-biased distribution} of $L$, that is, for any bounded Borel function $f$,
+\begin{equation*}
+		\expct\brac{f\expr{\dot L}}
+	=
+		\frac{\expct\brac{Lf(L)}}{\expct\brac{L}}.
+\end{equation*}
+	The celebrated \defn{size-biased Galton-Watson tree} is then constructed as follows:
+\begin{itemize}
+\item 
+	There is an initial particle which is marked.
+\item 
+	Any marked particle gives independent birth to a random number of children according to $\dot L$. Pick one of those children randomly as new marked particle while leaving other children as unmarked particles.
+\item 
+	Any unmarked particle gives independent birth to a random number of unmarked children according to $L$.
+\item 
+	The system goes on and on and on. 
+\end{itemize}
+\par
+	Notice all the marked particles form a descending family line which will be referred as the \defn{spine}. Define $\dot Z_n$ as the population of the $n$th generation in the size-biased tree. \citet*{lyons1995conceptual} proved that process $(\dot Z_n)_{n=0..}$ is the Doob's $h$-transformation of process $(Z_n)_{n=0..}$ with respect to the martingale $(Z_n)_{n=0..}.$ That is, for any generation number $n$ and a bounded Borel function $g$ on $\bbN_0^{n},$
+\begin{equation}
+\label{eq:htransformation}
+		\expct\brac{g\expr{\dot Z_1..\dot Z_n}}
+	=
+		\frac{\expct\brac{Z_n g\expr{Z_1..Z_n}}}{\expct\brac{Z_n}}.
+\end{equation}
+\par
+	In this article, we present a $k(k-1)$-type size-biased Galton-Watson tree whose structure relies on a two-spines skeleton. Denote by $\ddot L$ a random variable with the \defn{$k(k-1)$-type size-biased distribution} of $L$, that is, for any bounded Borel function $f$,
+\begin{equation*}
+		\expct\brac{f\expr{\ddot L}}
+	=
+		\frac{\expct\brac{L(L-1)f(L)}}{\expct\brac{L(L-1)}}.
+\end{equation*}
+	Fix a generation number $n$ and pick a random generation number $K_n$ uniformly among $\{0,..,n-1\}$. The \defn{$k(k-1)$-type size-biased $\mu$-Galton-Watson tree with height $n$} is then defined as a particle system such that:
+\begin{itemize}
+\item 
+	There is an initial particle which is marked.
+\item 
+	Before or after generation $K_n$, any marked particle gives independent birth to a random number of children according to $\dot L$. Pick one of those children randomly as new marked particle while leaving other children as unmarked particles.
+\item 
+	Any marked particle at generation $K_n$, however, gives an independent birth to a random number of children according to $\ddot L$. Pick two different particles randomly among those children as new marked particles while leaving other children as unmarked particles.
+\item 
+	Any unmarked particle gives independent birth to a random number of unmarked children according to $L$.
+\item 
+	The system stops at generation $n$.
+\end{itemize}
+\par
+	If we track all the marked particles, it's clear that they form a descending family line which splits into two separated lines after generation $K_n$. In other words, the family tree of all the marked particles can be considered as a \defn{two-spines skeleton} with $K_n$ as the last generation at which those two spines coincide with each other.
+\par	
+	The main reason of promoting such a model is that, if one write $\ddot Z_m^{(n)}$ for the population of the $m$th generation in the $k(k-1)$-type size-biased tree with height $n$, there is a change of measure relationship between process $(\ddot Z_m^{(n)})_{m=0..n}$ and $(Z_m)_{m=0..n}$ according to random variable $Z_n(Z_n-1)$.
+\begin{thm}[See proof in section \ref{sec:spacesandmeasures}]
+\label{thm:changeofmeasure}
+	Let $(Z_m)_{m=0..}$ be the $\mu$-Galton-Watson branching process and $(\ddot Z_m^{(n)})_{m=0..n}$ be the population of $k(k-1)$-type size-biased $\mu$-Galton-Watson tree with height $n$. Suppose that the offspring distribution $\mu$ satisfies \eqref{eq:mean} and \eqref{eq:variance}. Then, for any bounded Borel function $g$ on $\bbN^{n}_0$,
+\begin{equation*}
+		\prob\brac{g\expr{\ddot Z_1^{(n)}..\ddot Z_n^{(n)}}}
+	=
+		\frac{\prob\brac{Z_n(Z_n-1) g\expr{Z_1..Z_n}}}{\prob\brac{Z_n(Z_n-1)}}.
+\end{equation*}
+\end{thm}
+\par
+	The idea of branching particle system with more than one spine is not new. A related construction in  other situation occurs in \citet*{harris2015many}. They developed a branching particle system with $k$-spines as the key element to state a $k$th moment formula for branching Markov processes and branching random walks known as the many-to-few formula. Though highly inspired by their work, we employ a different two-spines model for the purpose to characterize the $k(k-1)$-type size-biased branching process.
+\subsection{Application}	
+	\citet*{lyons1995conceptual} argued that, in the size-biased Galton-Watson tree, the population of the particles off the spine (i.e. unmarked particles) could be considered as a branching process with independent immigrations. That is, besides the independent $\mu$-branching mechanism for each existing particles, an additional independent $(\dot L-1)$-distributed random number of particles will immigrate into the system at each generation $k\in\bbN$. Therefore, the number of off-spine particles in the $n$th generation, $\dot Z_n-1$, has a natural decomposition,
+\begin{equation}
+\label{eq:rawdecomposition}
+		\dot Z_n-1
+	=
+		\sum_{k=1}^{n}\dot Z_n^{(k)},
+\end{equation}
+	where $\dot Z^{(k)}_n$ is the number of particles in the $n$th generation whose oldest off-spine ancestors have generation number $k$. 
+\par	
+	Notice that $\{\dot Z_n^{(k)}: k=1..n\}$ are independent random variables and $\dot Z_n^{(k)}\eqlaw Z'_{n-k}$ for each $k=1..n$ where $(Z'_n)_{n=0..}$ represent a $\mu$-Galton-Watson branching process with initial population distributed according to $\dot L-1$. Denote by $\cL_X(\lambda):=\bE[e^{-\lambda X}],(\lambda \geq 0)$ the Laplace  transformation of some nonnegative random variable $X$. We prefer to rewrite equation \eqref{eq:rawdecomposition} into
+\begin{equation}
+\label{eq:spinedecomposition}
+		\cL_{\dot Z_n}(\lambda)
+	=
+		e^{-\lambda}\prod_{m=0}^{n-1} \cL_{Z'_m}(\lambda)
+	,(\lambda \geq 0).
+\end{equation}
+\par
+	 As an analogy, we consider a natural decomposition of the population $\ddot Z_n^{(n)}$ according to the two-spines skeleton in the $k(k-1)$-type size-biased Galton-Watson tree. This decomposition leads us to an additional characterization of $\dot Z_n$'s distribution.
+\begin{prop}[See proof in section \ref{sec:spinesdecomposition}]
+\label{lem:twospinedecomposition}
+	Let $(\dot Z_n)_{n=0..}$ be the size-biased $\mu$-Galton-Watson branching process. Let $(Z_n')_{n=0..}$ and $(Z_n'')_{n=0..}$ be $\mu$-Galton-Watson branching processes with initial population distributed according to $\dot L-1$ and $\ddot L-2$ respectively. Suppose that $\mu$ satisfies \eqref{eq:mean} and \eqref{eq:variance}. Then, for any $n\in \bbN_0$,
+\begin{equation}
+\label{eq:twospinedecomposition}
+		-\ln \cL_{\dot Z_n}(\lambda)
+	=
+		\lambda+\sigma^2\sum_{m=0}^{n-1}\int_0^\lambda \frac{\cL_{Z''_m}(s)}{\cL_{Z'_m}(s)}\cL_{\dot Z_m}(s)ds 
+	,\expr{\lambda \geq 0}.
+\end{equation}
+\end{prop}
+\par
+	With this proposition, we then discuss the asymptotic behaviour of $\dot Z_n$'s distribution. From the criticality of branching process $(Z'_n)_{n=0..}$ and $(Z''_n)_{n=0..}$, we have that $\prob\set{Z_n'=0}\to 1$ and $\prob\set{Z_n''=0}\to 1$ while $n\to\infty$. Therefore, by
+\begin{equation*}
+		\prob\set{Z_n''=0}
+	\leq
+		\cL_{Z_n''}(s)
+	\leq
+		\frac{\cL_{Z_n''}(s)}{\cL_{Z_n'}(s)}
+	\leq 
+		\frac{1}{\cL_{Z_n'}(s)}
+	\leq 
+		\frac{1}{\prob \set{Z_n'=0}}
+	,(s\geq 0,n=0..),
+\end{equation*}
+    we get that
+\begin{equation}
+\label{eq:uniformly}
+	    \frac{\cL_{Z_n''}(s)}{\cL_{Z_n'}(s)}
+	\to 
+	    1
+	,(\uniformly s\in [0,\infty)\while n\to\infty).
+\end{equation}
+    Replacing $\lambda$ with $\frac{\lambda}{n}$ and passing $n\to\infty$ in equation \eqref{eq:twospinedecomposition}, we see that, if $\frac{\dot Z_n}{n}$ has a weak limit, say $\dot Y$, then $\dot Y$ satisfies
+\begin{equation}
+\label{equation:exponential}
+		-\ln \cL_{\dot Y}(\lambda)
+	=
+		\sigma^2\int_0^1du\cdot\int_0^\lambda \cL_{\dot Y}(us)ds 
+	,\expr{\lambda \geq 0}.
+\end{equation}
+	Solving equation \eqref{equation:exponential}, we get that $\dot Y$ has the size-biased distribution of $Y$. This argument gives us a conceptual explanation of Yaglom's law, \eqref{thm:yaglom} of Theorem \ref{thm:kesten}, in a size-biased view. In section \ref{sec:anewproofofyaglomslaw}, we'll discuss this weak convergence and give a new probabilistic proof of Yaglom's law using Proposition \ref{lem:twospinedecomposition}. 
+\section{Trees and their decomposition}
+\label{sec:preliminary}
+\subsection{Spaces and measures}
+\label{sec:spacesandmeasures}
+	Consider \defn{particles} as elements in the space
+\begin{equation*}
+		\cU
+	:=
+		\set{\emptyset}\cup\bigcup_{k=1}^\infty \bbN^k.
+\end{equation*}
+	For any particle $u:=\expr{u_1..u_{n-1}u_n}$, define its \defn{generation} as $\abs{u}:=n$ and its \defn{parent particle} as $\parent{u}:=(u_1..u_{n-1})$. For any particle $u\in\cU$ and any subset $\mathbf a\subset\cU$, define the \defn{decedent number of $u$ in $\mathbf a$} as $l_u(\mathbf a) := \#\set{\alpha\in \mathbf a:\parent{\alpha}=u} $. We also define $\mathbf a$'s \defn{height} as $\norm{\mathbf a}:=\sup_{\alpha\in \mathbf a}|\alpha|$ and its \defn{population in the $n$th generation} as $X_n(\mathbf a):=\#\set{u\in \mathbf a:|u|=n}$. A \defn{planer tree} $\tree$ is defined as a subset of $\cU$ such that there exists a $\bbN_0$-valued sequence $(l_u)_{u\in \cU}$, indexed by $\cU$, satisfying 
+\begin{equation*}
+		\tree
+	=
+		\set{(u_1..u_m)\in \cU: m\in \bbN_0, u_j\leq l_{(u_1..u_{j-1})}, \forall j=1..m}. 
+\end{equation*}
+	A \defn{spine} $\spine$ on a planer tree $\tree$ is defined as a sequence of particles $\{v^{(k)}:k=1..\|\tree\|\}\subset\tree$ such that $v^{(0)}=\emptyset$ and $\parent{v^{(k)}}=v^{(k-1)}$ for any $k=1..\|\tree\|$. In the case that $\|\tree\|=\infty$, we simply write $k=1..\|\tree\|$ for $k\in\bbN$.
+\par
+	Fix a generation number $n\in \bbN$. Define the following spaces:
+\begin{itemize}
+\item 
+	\defn{The space of planer trees with height no more than $n$},
+\begin{equation*}
+		\bbT_{\leq n}
+	:=
+		\set{\tree:\tree\text{ is a planer tree with }\norm{\tree}\leq n}.
+\end{equation*} 
+\item 
+	\defn {The space of $n$-height planer trees with one distinguishable spine,}
+\begin{equation*}
+		\dot{\bbT}_n
+	:=
+		\set{(\tree,\spine):\tree \text{ is a planer tree with }\norm{\tree}=n, \spine \text{ is a spine on } \tree}.
+\end{equation*}
+	\item \defn{The space of $n$-height planer trees with two different distinguishable spines,}
+\begin{equation*}
+		\ddot{\bbT}_n
+	:=
+		\set{(\tree,\spine,\spine'):(\tree,\spine)\in\dot\bbT_n,(\tree,\spine')\in\dot\bbT_n,\spine\neq\spine'}.
+\end{equation*}
+\end{itemize}
+\par
+	Let $(L_u)_{u\in\cU}$ be a collection of independent random variables with law $\mu$, indexed by $\cU$. Denote by $T$ the random planer tree defined by
+\begin{equation*}
+		T
+	:=
+		\set{(u_1..u_m)\in \cU: m=0..n, u_j\leq L_{(u_1..u_{j-1})},\forall j=1..m}. 
+\end{equation*}
+	We refer to $T$ as a \defn{Galton-Watson tree with height no more than n} since its population $(X_m(T))_{m=0..n}$ is a Galton-Watson branching process stopped at generation $n$. Define the \defn{$\mu$-Galton-Watson measure $\bG_n$} on $\bbT_{\leq n}$ as the law of random planer tree $T$. That is, for any $\tree\in\bbT_{\leq n}$,
+\begin{equation*}
+		\bG_n\set{\tree}
+	=
+		\prob\set{T=\tree}
+	=
+		\prob\set{L_u=l_u(\tree),(\forall u\in\tree,|u|<n)}
+	=
+		\prod_{u\in \tree:|u|<n}\mu\set{l_u(\tree)}.
+\end{equation*}
+\par
+	Recall that $\dot L$ has the size-biased distribution of $L$. Define $\dot C$ as a random number which, while conditioning on $\sigma(\dot L)$, is uniformly distributed on $\{1..\dot L\}$. Independent of $(\dot L_u)_{u\in\cU}$, let $(\dot L_u,\dot C_u)_{u\in \cU}$ be a collection of independent copies of $(\dot L,\dot C)$, indexed by $\cU$.  We then use $(L_u)_{u\in\cU}$ and $(\dot L_u,\dot C_u)_{u\in\cU}$ as the building elements to construct the size-biased Galton-Watson tree $\dot T$ and its distinguishable spine $\dot V$ following the steps described in section \ref{sec:model}. We use $L_u$ as the number of children for particle $u$ if $u$ is unmarked and use $\dot L_u$ if $u$ is marked. In the latter case, we always set the $C_u$th children of $u$, i.e. particle $(u,C_u)$, as the new marked particle. For our own interests, we stop the system at generation $n$. To be precise, the random spine $\dot V$ is defined by
+\begin{equation*}
+		\dot V
+	:=
+		\set{(v_1..v_m)\in \cU:m=0..n, v_j=\dot C_{(v_1..v_{j-1})},\forall j=1..m},
+\end{equation*}
+	and the random planer tree $\dot T$ is defined by
+\begin{equation*}
+	\dot T:=\set{(u_1..u_m)\in\cU: m=0..n,u_j\leq \tilde L_{(u_1..u_{j-1})},\forall j=1..m},
+\end{equation*}
+	where, for any $u\in\cU$, $\tilde L_u:=L_u\ind{u\not\in \dot V}+\dot L_u\ind{u\in \dot V}$. 
+\par
+	We then consider the distribution of the $\dot\bbT_n$-valued random element $(\dot T,\dot V)$. For any $(\tree,\spine)\in\dot\bbT_n$, the event $\{(\dot T,\dot V)=(\tree,\spine)\}$ occurs if and only if:
+\begin{itemize}
+\item
+    $L_u=l_u(\tree)$ for each $u\in \tree\setminus\spine$ with $\abs{u}<n$ and
+\item
+    $(\dot L_{(v_1..v_m)},\dot C_{(v_1..v_m)})=(l_{(v_1..v_m)}(\tree),v_{m+1})$ for each $(v_1..v_{m+1})\in\spine$ with $m=0..n-1$.
+\end{itemize}
+    Therefore, the distribution of $(\dot T,\dot V)$ can be determined by
+\begin{equation}
+\label{eq:treespinemeasure}
+		\prob\set{(\dot T,\dot V)=(\tree,\spine)}
+	=
+	    \prod_{u\in \tree\setminus\spine:|u|<n}\mu\set{l_u(\tree)}
+	\cdot
+		\prod_{u\in \spine:\abs{u}<n} \frac{l_u(\tree)\mu\set{l_u(\tree)}}{m}\frac{1}{l_u(\tree)}
+    =
+		\bG\set{\tree}.
+\end{equation}
+\par	
+	The \defn{size-biased Galton-Watson measure $\dot \bG_n$} on space $\bbT_{\leq n}$ is then defined as the law of the $\bbT_{\leq n}$-valued random element $\dot T$. That is, for any $\tree\in\bbT_{\leq n}$,
+\begin{equation}
+\label{eq:sizebiasedGWmeasure}
+\begin{split}
+		\dot \bG_n\set{\tree}
+	&:=
+		\bP\set{\dot T=\tree}
+	=
+		\sum_{\spine:(\tree,\spine)\in \dot\bbT_n} \bP\set{(\dot T,\dot V)=(\tree,\spine)}
+	\\&=
+	    \#\set{\spine:(\tree,\spine)\in \dot\bbT_n}
+	\cdot 
+	    \bG_n\set{\tree}
+	=
+		X_n(\tree)
+    \cdot 
+        \bG_n\set{\tree}.
+\end{split}
+\end{equation}
+\par	
+	Equation \eqref{eq:treespinemeasure}, \eqref{eq:sizebiasedGWmeasure} and their natural corollary \eqref{eq:htransformation} were first obtained by \citet*{lyons1995conceptual}. We recover them as a helpful analogy for understanding how the $k(k-1)$-type size-biased Galton-Watson tree can be represented. 
+\par	
+	Recall that $K_n$ is a random generation number uniformly distributed on $\{0..n-1\}$, and $\ddot L$ is a random variable with the $k(k-1)$-type size-biased distribution of $L$. Define $(\ddot C,\ddot C')$ as a random vector which, while conditioning on $\sigma(\ddot L)$, is uniformly distributed on $\{(i,j)\in\bbN^2:1\leq i\neq j\leq \ddot L\}$. Suppose that $(\dot L_u)_{u\in\cU}, (\dot L_u,\dot C_u)_{u\in \cU}$, $(\ddot L,\ddot C,\ddot C')$ and $K_n$ are independent of each other. We then use these elements to build the $k(k-1)$-type size-biased Galton-Watson tree $\ddot T$ and its two different distinguishable spines $\ddot V$ and $\ddot V'$ following the steps described in section \ref{sec:model}. Write $C_u:=\dot C_u\ind{|u|\neq K_n}+\ddot C\ind{|u|=K_n}$ and $C'_u:=\dot C_u\ind{|u|\neq K_n}+\ddot C'\ind{|u|=K_n}$. We define the random spines $\ddot V$ and $\ddot V'$ as
+\begin{align*}
+        \ddot V
+	&:=
+		\set{(v_1..v_m)\in \cU:m=0..n, v_j= C_{(v_1..v_{j-1})},\forall j=1..m},
+	\\
+	    \ddot V'
+	&:=
+		\set{(v_1..v_m)\in \cU:m=0..n, v_j= C'_{(v_1..v_{j-1})},\forall j=1..m},
+\end{align*}
+    and the random planer tree $\ddot T$ as
+\begin{equation*}
+	    \ddot T
+	:=
+	    \set{(u_1..u_m)\in\cU: m=0..n,u_j\leq L''_{(u_1..u_{j-1})},\forall j=1..m},
+\end{equation*}
+	where, for any $u\in\cU$, $L''_u:=L_u \ind{u\not\in \ddot V\cup\ddot V'}+\dot L_u \ind{u\in \ddot V\cup\ddot V',|u|\neq K_n}+\ddot L\ind{u\in \ddot V\cup\ddot V',|u|=K_n}$.
+\par
+    We then consider the distribution of the random element $(\ddot T,\ddot V,\ddot V')$. For any $(\tree,\spine,\spine')\in\ddot\bbT_n$, the event $\{(\ddot T,\ddot V,\ddot V')=(\tree,\spine,\spine')\}$ occurs if and only if:
+\begin{itemize}
+\item
+    $K_n=k_n:=\norm{\spine\cap\spine'}$,
+\item 
+    $L_u=l_u(\tree)$ for each $u\in \tree\setminus(\spine\cup\spine')$ with $\abs{u}<n$,
+\item
+    $(\dot L_{(v_1..v_m)},\dot C_{(v_1..v_m)})=(l_{(v_1..v_m)}(\tree),v_{m+1})$ for each $(v_1..v_mv_{m+1})\in\spine\cup\spine'$ with $k_n\neq m<n$ and
+\item
+    $(\ddot L,\ddot C,\ddot C')=(l_{(v_1..v_{k_n})}(\tree),v_{k_n+1},v'_{k_n+1})$ for $(v_1..v_{k_n}v_{k_n+1})\in\spine$ and $(v_1..v_{k_n}v'_{k_n+1})\in\spine'$.
+\end{itemize}
+    Following this analysis, one can verify that
+\begin{multline*}
+		\prob\set{(\ddot T,\ddot V,\ddot V')=(\tree,\spine,\spine')}
+	=
+		\frac{1}{n}
+	\cdot
+	    \prod_{u\in \tree\setminus(\spine\cup \spine'):|u|<n}\mu\set{l_u(\tree)}
+	\cdot
+	    \prod_{u\in \spine\cup \spine':k_n\neq|u|<n}\frac{l_u(\tree)\mu\set{l_u(\tree)}}{m}\frac{1}{l_u(\tree)}
+    \\\cdot
+		\prod_{u\in \spine\cup \spine':|u|=k_n}\frac{l_u(\tree)(l_u(\tree)-1)\mu\set{l_u(\tree)}}{\sigma^2}\frac{1}{l_u(\tree)(l_u(\tree)-1)}
+	=
+		\frac{1}{n\sigma^2}\bG\set{\tree}.
+\end{multline*}
+\par	
+	The \defn{$k(k-1)$-type size-biased Galton-Watson measure $\ddot \bG_n$} on space $\bbT_{\leq n}$ is then defined as the law of the random element $\ddot T$. That is, for any $\tree\in\bbT_{\leq n}$,
+\begin{equation}
+\label{eq:k(k-1)typesizebiasedGWmeasure}
+\begin{split}
+		\ddot \bG_n\set{\tree}
+	&:=
+		\bP\set{\ddot T=\tree}
+	=
+		\sum_{(\spine,\spine'):(\tree,\spine,\spine')\in \ddot\bbT_n} \bP\set{(\ddot T,\ddot V,\ddot V')=(\tree,\spine,\spine')}
+	\\&= 
+	    \#\set{(\spine,\spine'):(\tree,\spine,\spine')\in \ddot\bbT_n}
+	\cdot 
+	    \frac{\bG_n\set{\tree}}{n\sigma^2}
+	=
+		\frac{X_n(\tree)(X_n(\tree)-1)}{n\sigma^2}
+    \cdot 
+        \bG_n\set{\tree}.
+\end{split}
+\end{equation}
+\begin{proof}[Proof of Theorem \ref{thm:changeofmeasure}]
+    Since the process $(X_m(\tree))_{m=0..n}$ under $\bG_n$ is exactly a Galton-Watson branching process stopped at generation $n$, we have that $((X_m(\tree))_{m=0..n};\bG_n) \eqlaw (Z_m)_{m=0..n}.$ Similarly, since the process $(X_m(\tree))_{m=0..n}$ under measure $\ddot \bG_n$ is constructed as the population of a $k(k-1)$-type size-biased Galton-Watson tree with height $n$, we have that $((X_m(\tree))_{m=0..n};\ddot \bG_n) \eqlaw (\ddot Z_m)_{m=0..n}.$ Rewrite equation \eqref{eq:k(k-1)typesizebiasedGWmeasure} into its Radon-Nikodym derivative form,
+\begin{equation*}
+    \frac{\ddot \bG_n(d\tree)}{\bG_n(d\tree)}=\frac{X_n(\tree)(X_n(\tree)-1)}{n\sigma^2}, (\tree\in\bbT_{\leq n}).
+\end{equation*}
+    For any bounded Borel function $g$ on $\bbN_0^n$, we can then verify that
+\begin{multline}
+\label{eq:proofofchangeofmeasure}
+        \expct\brac{g\expr{\ddot Z_1^{(n)}..\ddot Z_n^{(n)}}}
+	=
+        \ddot \bG_n\brac{g\expr{X_1(\tree)..X_n(\tree)}}
+    \\=
+        \bG_n\brac{\frac{X_n(\tree)(X_n(\tree)-1)}{n\sigma^2}g\expr{X_1(\tree)..X_n(\tree)}}
+    =
+		\frac{\expct\brac{Z_n(Z_n-1) g\expr{Z_1..Z_n}}}{n\sigma^2}.
+\end{multline}
+    Taking $g\equiv 1$ in equation \eqref{eq:proofofchangeofmeasure}, we get that $\expct[Z_n(Z_n-1)]=n\sigma^2$.
+\end{proof}
+\subsection{Spines decomposition}
+\label{sec:spinesdecomposition}
+	For any particle $u=(u_1..u_n)$, define 
+\begin{equation*}
+	    \ancestor{u}
+	:=
+	    \set{(u_1..u_j):j=0..n}
+\end{equation*}
+    as the \defn{descending family line from $\emptyset$ to $u$}. Consider the size-biased Galton-Watson tree $(\dot T,\dot V)$. Since $\|\dot V\|=n$, we must have, for any particle $u\in\cU$, $\|\ancestor{u}\cap\dot V\|\in\set{0,1,..,n}$. Therefore, the particles in $\dot T$ can be separated into $n+1$ parts, 
+\begin{equation*}
+		\dot T
+	=
+		\bigcup_{k=0}^n\dot A_k
+	:=
+	    \bigcup_{k=0}^n\set{u\in\dot T:\norm{\ancestor{u}\cap \dot V}=k}.
+\end{equation*}
+	This seperation gives a natural decomposition of the $n$th population of $\dot T$,
+\begin{equation}
+\label{eq:generationseperation}
+		X_n(\dot T)
+	=
+		\sum_{k=0}^nX_n(\dot A_k).
+\end{equation}
+	With a closer look, \eqref{eq:generationseperation} is exactly the spine decomposition \eqref{eq:rawdecomposition} in a sense that
+\begin{equation*}
+        \expr{X_n(\dot T),\expr{X_n(\dot A_k)}_{k=0..n-1},X_n(\dot A_n)}
+    \eqlaw
+        \expr{\dot Z_n,\expr{\dot Z_n^{(k+1)}}_{k=0..n-1},1}.
+\end{equation*}
+\par
+	Similarly, consider the $k(k-1)$-type size-biased Galton-Watson tree $(\ddot T,\ddot V,\ddot V')$. Since $\|\ddot V\cup\ddot V'\|=n$, we must have, for any particle $u\in\cU$, $\|\ancestor{u}\cap(\ddot V\cup \ddot V')\|\in\{0,1,..,n\}$. Therefore, the particles in $\ddot T$ can also be separated into $n+1$ parts,
+\begin{equation*}
+		\ddot T
+	=
+		\bigcup_{k=0}^n \ddot A_k
+	:=
+		\bigcup_{k=0}^n\set{u\in\ddot T:\norm{\ancestor{u}\cap\expr{\ddot V\cup\ddot V'}}=k}.
+\end{equation*}  
+    This separation gives a natural decomposition of the $n$th population of $\ddot T$,
+\begin{equation}
+\label{eq:rawtwospinedecomposition}
+		X_n(\ddot T)
+	=
+		\sum_{k=0}^nX_n(\ddot A_k)
+	=
+	    \sum_{k=0}^{K_n-1}X_n(\ddot A_k)
+	+
+		X_n(\ddot A_{K_n})
+	+
+		\sum_{k=K_n+1}^nX_n(\ddot A_k).
+\end{equation}
+	Taking $m\in\{0..n-1\}$ and conditioning on $K_n=m$, we may argue from the construction of $(\ddot T,\ddot V,\ddot V')$ that:
+\begin{itemize}
+\item
+    for any $k=0..m-1$, $X_n(\ddot A_k)\eqlaw Z'_{n-k-1}$,
+\item
+    $X_n(\ddot A_m)\eqlaw Z''_{n-m-1}$,
+\item 
+    $\sum_{k=m+1}^nX_n(\ddot A_k)\eqlaw \dot Z_{n-m-1}^{(1)}+\dot Z_{n-m-1}^{(2)}$ and
+\item
+    $\{X_n(\ddot A_k):k=0..n\}$ are independent of each other.
+\end{itemize}
+    Here, $(Z_k')_{k=0..}$ and $(Z_k'')_{k=0..}$ are $\mu$-Galton-Watson branching processes with initial population distributed according to $\dot L-1$ and $\ddot L-2$ respectively. $(\dot Z_k^{(1)})_{k=0..}$ and $(\dot Z_k^{(2)})_{k=0..}$ are two independent copies of the size-biased $\mu$-Galton-Watson branching process $(\dot Z_k)_{k=0..}$. Following those arguments, taking Laplace transform, we may rewrite \eqref{eq:rawtwospinedecomposition} into,
+\begin{equation}
+\label{eq:laplacetransformationoftwospinedecomposition}
+\begin{split}
+		\cL_{\ddot Z_n^{(n)}}(\lambda)
+	&=
+		\prob\brac{e^{-\lambda X_n(\ddot T)}}
+	= 
+	    \sum_{m=0}^{n-1}\prob\set{K_n=m}\prob\brac{e^{-\lambda X_n(\ddot T)}\bigg| K_n=m}
+	\\&=
+        \frac{1}{n}\sum_{m=0}^{n-1}\prod_{k=0}^{m-1}\cL_{Z'_{n-k-1}}(\lambda)
+    \cdot
+        \cL_{Z''_{n-m-1}}(\lambda)\cL_{\dot Z_{n-m-1}}^2(\lambda)
+    ,(\lambda\geq 0).
+\end{split}
+\end{equation}
+\begin{proof}[Proof of Proposition \ref{lem:twospinedecomposition}]
+    It follows from \eqref{eq:spinedecomposition} that 
+\begin{multline}
+\label{eq:keytakingback}
+	    \frac{\cL_{\dot Z_n}(\lambda)}{\cL_{Z_{n-m-1}'}(\lambda)\cL_{\dot Z_{n-m-1}}(\lambda)}
+	= 
+	    \cL_{Z_{n-m-1}'}^{-1}(\lambda)\frac{e^{-\lambda}\prod_{m=0}^{n-1}\cL_{Z'_m}(\lambda)}{e^{-\lambda}\prod_{m=0}^{n-m-2}\cL_{Z'_m}(\lambda)}
+	=
+	    \prod_{k=0}^{m-1}\cL_{Z'_{n-k-1}}(\lambda)
+	,(\lambda\geq 0).
+\end{multline}
+    Taking \eqref{eq:keytakingback} back into \eqref{eq:laplacetransformationoftwospinedecomposition}, we get that, for any $\lambda\geq 0$,
+\begin{equation}
+\label{eq:keyrelation}
+        \cL_{\ddot Z_n^{(n)}}(\lambda)
+	=
+        \frac{1}{n}\sum_{m=0}^{n-1}\cL_{\dot Z_n}(\lambda)\frac{\cL_{Z''_{n-m-1}}(\lambda)}{\cL_{Z_{n-m-1}'}(\lambda)}\cL_{\dot Z_{n-m-1}}(\lambda)
+    =
+        \frac{1}{n}\cL_{\dot Z_n}(\lambda)\sum_{m=0}^{n-1}\frac{\cL_{Z''_m}(\lambda)}{\cL_{Z'_m}(\lambda)}\cL_{\dot Z_m}(\lambda).
+\end{equation}
+    According to \eqref{eq:htransformation} and Theorem \ref{thm:changeofmeasure}, $\dot Z_n$ and $\ddot Z_n^{(n)}$ have the size-biased and $k(k-1)$-type size-biased distribution of $Z_n$ respectively. Therefore
+\begin{equation}
+\label{eq:firstderivative}
+        \cL_{\dot Z_n}(\lambda)
+	= 
+	    \expct\brac{Z_n e^{-\lambda Z_n}}
+	=
+	    -\cL_{Z_n}'(\lambda)
+	,(\lambda > 0),
+\end{equation}
+    and
+\begin{equation}
+\label{eq:secondderivative}
+        \cL_{\ddot Z_n}(\lambda)
+	=
+		\frac{1}{n\sigma^2}\expct\brac{Z_n(Z_n-1)e^{-\lambda Z_n}}
+	=
+		\frac{1}{n\sigma^2}\expr{\cL_{Z_n}''(\lambda)+\cL_{Z_n}'(\lambda)}
+	,(\lambda > 0).
+\end{equation}
+It then follows from \eqref{eq:keyrelation}, \eqref{eq:firstderivative} and \eqref{eq:secondderivative} that
+\begin{equation*}
+		-\frac{d}{d\lambda}\ln \cL_{\dot Z_n}(\lambda)
+	=
+		-\frac{\cL_{Z_n}''(\lambda)}{\cL_{Z_n}'(\lambda)}
+	=
+		1+\sigma^2\sum_{m=0}^{n-1}\frac{\cL_{Z''_{m}}(\lambda)}{\cL_{Z'_{m}}(\lambda)}\cL_{\dot Z_{m}}(\lambda),
+	(\lambda > 0).
+\end{equation*}
+	Integration gives that, for any $\lambda\geq 0$,
+\begin{equation*}
+		-\ln \cL_{\dot Z_n}(\lambda)
+	=
+		\lambda
+	+
+		\sigma^2\sum_{m=0}^{n-1}\int_0^\lambda \frac{\cL_{Z''_{m}}(s)}{\cL_{Z'_{m}}(s)}\cL_{Z_m}(s)ds.
+\end{equation*}
+\end{proof}
+\section{A new proof of Yaglom's law}
+\label{sec:anewproofofyaglomslaw}
+\begin{lem}
+\label{lem:zeroinequality}
+    Suppose that $c>0$ is constant, and function $F:[0,\infty)\to [0,1]$ satisfies that, for any $\lambda\geq 0$,
+\begin{equation}
+\label{eq:zeroinequality}
+	    F(\lambda)
+	\leq 
+	    \frac{1}{c}\int_0^1du
+	\cdot 
+	    \int_0^\lambda F(us)ds.
+\end{equation}
+    Then $F\equiv 0$.
+\end{lem}
+\begin{proof}
+    We firstly show that $F(\lambda)=0$ while $\lambda \in [0,c)$. Actually, taking $F(us)\leq 1$ in the right hand of \eqref{eq:zeroinequality} gives us
+\begin{equation*}
+        F(\lambda)
+    \leq 
+        \frac{1}{c}\int_0^1du
+    \cdot 
+	    \int_0^\lambda ds
+	=
+	    \frac{\lambda}{c}
+	, (\lambda\geq 0).
+\end{equation*}
+    Taking this new upper bound back into the right hand of \eqref{eq:zeroinequality} gives an updated upper bound of $F$,
+\begin{equation*}
+        F(\lambda)
+    \leq 
+        \frac{1}{c}\int_0^1du
+    \cdot 
+	    \int_0^\lambda \frac{us}{c}ds
+	\leq 
+        \frac{1}{c}\int_0^1du
+    \cdot 
+	    \int_0^\lambda \frac{\lambda}{c}ds
+	=
+	    \expr{\frac{\lambda}{c}}^2
+	, (\lambda\geq 0).
+\end{equation*}
+    Repeating this process, we will have $F(\lambda)\leq (\frac{\lambda}{c})^m$ for any $m>0$. Therefore $F=0$ on $[0,c)$.
+\par
+    To complete the proof, we then show that, for any $k\in\bbN$, $F=0$ on $[0,kc)$ implies that $F=0$ on $[0,(k+1)c)$. Actually, while $F=0$ on $[0,kc)$, we have
+\begin{equation*}
+	    F\expr{kc+\lambda}
+	\leq 
+	    c^{-1}\int_0^1 du\cdot\int_0^{kc+\lambda}F(us)ds
+	=
+	    c^{-1}\int_0^1du\cdot\int_{kc}^{kc+\lambda} F(us)ds\leq\frac{\lambda}{c}
+	,(\lambda\geq 0).
+\end{equation*}
+	Using this technique again, we get that
+\begin{equation*}
+	    F(kc+\lambda)
+	\leq
+	    c^{-1}\int_0^1du\cdot\int_{kc}^{kc+\lambda} F(us)ds
+	\leq
+	    c^{-1}\int_0^1du\cdot\int_{kc}^{kc+\lambda} \frac{\lambda}{c}ds
+	\leq\expr{\frac{\lambda}{c}}^2
+    ,(\lambda\geq 0).
+\end{equation*}
+	Repeating this process gives that $F(kc+\lambda)\leq (\frac{\lambda}{c})^m$ for any $m>0$. Therefore $F=0$ on $[0,(k+1)c)$. The rest of the proof follows by induction.
+\end{proof}
+\begin{proof}[Proof of \eqref{thm:yaglom} of Theorem \ref{thm:kesten}.]
+	Write $\nu:=\frac{2}{\sigma^2}$. Define
+\begin{equation}
+		M(a,\lambda)
+	:=
+		\abs{\cL_{\frac{\dot Z_{[a]}}{a}}(\lambda)-\frac{\nu^2}{(\nu+\lambda)^2}}
+	,(\lambda \geq 0).
+\end{equation}
+	We firstly want to show that, for any $\lambda\geq 0$,
+\begin{equation}
+\label{eq:Miszerofunction}
+		M(\lambda)
+	:=
+		\limsup_{a\to\infty}M(a,\lambda)
+	=
+		0.
+\end{equation}
+	Actually, replacing $\lambda$ with $\frac{\lambda}{n}$ in \eqref{eq:twospinedecomposition}, we have that, for any $\lambda\geq 0$,
+\begin{equation}
+\label{eq:passingtolimitequation}
+\begin{split}
+		-\ln \cL_{\frac{\dot Z_n}{n}}(\lambda)
+	&=
+		\frac{\lambda}{n}+\sigma^2\sum_{m=0}^{n-1}\int_0^{\frac{\lambda}{n}} \frac{\cL_{Z''_m}(s)}{\cL_{Z'_m}(s)}\cL_{\dot Z_{m}}(s)ds
+	\\&=
+		\frac{\lambda}{n}+\frac{2}{\nu}\int_0^1 du \cdot \int_0^{\lambda} \frac{\cL_{Z''_{[un]}}\expr{\frac{s}{n}}}{\cL_{Z'_{[un]}}\expr{\frac{s}{n}}}\cL_{\frac{\dot Z_{[un]}}{un}}(us)ds.
+\end{split}
+\end{equation}
+	On the other hand, it's elementary calculus that
+\begin{equation}
+\label{eq:limitequation}
+        -\ln\frac{\nu^2}{(\nu+\lambda)^2}
+    =
+		\frac{2}{\nu}\int_0^1du\cdot\int_0^\lambda \frac{\nu^2}{(\nu+us)^2}ds,
+	(\lambda\geq 0).
+\end{equation}
+	Following \eqref{eq:passingtolimitequation}, \eqref{eq:limitequation} and the obvious fact that $\abs{a-b}\leq\abs{\ln a-\ln b}$ for any $0<a,b\leq 1$, we conclude that, for any $\lambda\geq 0$,
+\begin{equation}
+\label{eq:inequalitybeforepassingtolimit}
+\begin{split}
+        M(n,\lambda)
+    &\leq
+		\abs{\ln \cL_{\frac{\dot Z_n}{n}}(\lambda)-\ln\frac{\nu^2}{(\nu+\lambda)^2}}
+	\\&\leq
+		\frac{\lambda}{n}
+	+
+	    \frac{2}{\nu}\int_0^1 du
+	\cdot 
+	    \int_0^{\lambda} \abs{\frac{\cL_{Z''_{[un]}}\expr{\frac{s}{n}}}{\cL_{Z'_{[un]}}\expr{\frac{s}{n}}}\cL_{\frac{\dot Z_{[un]}}{un}}(us)- \frac{\nu^2}{(\nu+us)^2}}ds.
+\end{split}
+\end{equation}
+    Passing $n$ to $\infty$ in \eqref{eq:inequalitybeforepassingtolimit}, using \eqref{eq:uniformly} and the Reverse Fatou's Lemma, we arrive at
+\begin{equation*}
+	    M(\lambda)
+    \leq 
+        \frac{2}{\nu}\int_0^1du
+    \cdot
+        \int_0^\lambda M(us)ds
+    ,(\lambda\geq 0).
+\end{equation*}
+	Consequently, according to Lemma \ref{lem:zeroinequality}, $M\equiv 0$.
+\par
+	The rest of the proof follows a standard tightness argument. For the Galton-Watson branching process $((Z_n)_{n=0..};\prob)$, write $\prob_n^*[\cdot]:=\prob[\cdot|Z_n>0]$. By Kolmogorov's estimate, \eqref{thm:kolmogorov} of Theorem \ref{thm:kesten}, one can calculate that
+\begin{equation*}
+	    \expct_n^*\brac{\frac{Z_n}{n}}
+	=
+	    \expct\brac{\frac{1_{Z_n>0}}{\prob\set{Z_n>0}}\frac{Z_n}{n}}
+	=
+	    \frac{\expct\brac{Z_n}}{n\prob\set{Z_n>0}}
+    \to
+        \frac{1}{\nu}
+    ,(n\to\infty).  
+\end{equation*}
+	As a consequence, laws of $(\frac{Z_n}{n};\prob_n^*)_{n=1..}$ are tight and there will be some sub-sequence, say $(\frac{Z_{n_k}}{n_k};\prob_{n_k}^*)_{k=1..}$, converging in law to some non-negative random variable, say $Y$. For any fixed $\lambda >0$, from the fact that function $x\mapsto 1_{x\geq 0}xe^{-\lambda x}$ is bounded and continuous, we have
+\begin{equation}
+\label{eq:subsequence}
+	    \expct_{n_k}^*\brac{\frac{Z_{n_k}}{n_k}\exp\set{-\lambda\frac{Z_{n_k}}{n_k}}}
+	\to
+	    \expct\brac{Ye^{-\lambda Y}},
+	(k\to\infty).
+\end{equation}
+	On the other hand, using \eqref{eq:htransformation}, we can verify that, for each $n\in\bbN$,
+\begin{equation}
+\label{eq:sizebiasedandcondition}
+	    \expct\brac{e^{-\lambda\frac{\dot Z_n}{n}}}
+	=
+	    \expct\brac{Z_n e^{-\lambda\frac{Z_n}{n}}}
+	=
+	    n\prob\set{Z_n>0}\expct_n^*\brac{\frac{Z_n}{n}e^{-\lambda\frac{Z_n}{n}}}.   
+\end{equation}
+	Taking $n=n_k$ and passing $k\to\infty$, it follows from Kolmogorov's estimate, \eqref{eq:subsequence} and \eqref{eq:sizebiasedandcondition} that
+\begin{equation*}
+	    \expct\brac{e^{-\lambda\frac{\dot Z_{n_k}}{n_k}}}
+	\to
+	    \nu\expct\brac{Ye^{-\lambda Y}}.
+\end{equation*}
+	Comparing this with \eqref{eq:Miszerofunction}, we must have, for any $\lambda >0$,
+\begin{equation*}
+	    -\nu\cL_Y'(\lambda)
+	=
+	    \nu\expct\brac{Ye^{-\lambda Y}}
+    =	
+	    \frac{\nu^2}{(\nu+\lambda)^2}.
+\end{equation*}
+	Integration then gives that
+\begin{equation*}
+	    \cL_Y(\lambda)
+	=
+	    1
+	+
+	    \int_0^\lambda\frac{-\nu}{(\nu+s)^2}ds
+	=
+	    \frac{\nu}{\nu+\lambda}. 
+\end{equation*}
+	So, $Y$ must be an exponentially distributed random variable with mean $\nu^{-1}=\frac{\sigma^2}{2}$. In particular, $Y$'s distribution is independent of the choice of $n_k$, and hence we have the convergence in law for the whole sequence, as desired.
+\end{proof}
+\bibliographystyle{plainnat}
+\bibliography{YaglomGW}
+\end{document}
