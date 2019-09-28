@@ -77,7 +77,7 @@
 \label{sec:model}
 	Consider a critical Galton-Watson process
 	$\{(Z_n)_{n\ge 0}; P \}$ with $Z_0 = 1$
-	and offspring distribution $\mu$ on $\mathbb N_0 : = \{0,1,\dots\}$ which has mean $1$ and finite non-degenerate variance $\sigma^2$, i.e.,
+	and offspring distribution $\mu$ on $\mathbb N_0 : = \{0,1,\dots\}$ which has mean $1$ and finite variance $\sigma^2>0$, i.e.,
 \begin{equation}\label{eq:mean}
  \sum_{k=0}^\infty k \mu(k)	=1
 \end{equation}
@@ -118,7 +118,7 @@
 	\]
 	for each positive Borel function $f$.
 %new
-A $X$-$g(X)$-size-biased transform of of $X$ is simply called a size-biased transform of of $X$.
+A $X$-size-biased transform of of $X$ is sometimes simply called a size-biased transform of of $X$.
 %end new
 
 	We now recall the size-biased $\mu$-Galton-Watson tree introduced in \cite{lyons1995conceptual}.
@@ -229,7 +229,7 @@ birth independently to a random number of unmarked children according to $L$.
 	\\&\quad = \frac{1}{P(X>0)}\int_0^\lambda E[Xe^{-s X}]ds = E[X|X>0]\int_0^\lambda E[e^{-s \dot X}]ds.
 \end{split}
 \end{equation}
-	As a consequence, in order to show the Yaglom's theorem, 
+	As a consequence, in order to show Yaglom's theorem, 
 we only need to prove that
 \begin{equation}
 \label{eq: convergence of conditional expectation}
@@ -259,15 +259,20 @@ Theorem \ref{thm: Kolmogrov and Yaglom theorem}(\ref{thm:kolmogorov}).
 \begin{equation}
 \label{eq: x2 type size-biased equation for exponential distribution}
 	\ddot Y \overset{d}
-	= \dot Y + U \cdot \dot Y'.
+%	= \dot Y + U \cdot \dot Y'.
+	= \dot Y + U \cdot \dot Y',
 \end{equation}
-	Here $\dot Y$ and $\dot Y'$ are both $Y$-transforms of  $Y$,
+%	Here $\dot Y$ and $\dot Y'$ are both $Y$-transforms of  $Y$,
+ where $\dot Y$ and $\dot Y'$ are both $Y$-transforms of  $Y$,
 $\ddot Y$ is a $Y^2$-transform of $Y$,
 	$U$ is a uniform random variable on $[0,1]$, and $\dot Y$, $\dot Y'$, $\ddot Y$
 	and $U$ are independent.
 \end{lem}	
 	With this lemma and Theorem \ref{thm: change of measure}, we can give an intuitive explanation of the exponential convergence in Yaglom's Theorem.
-	From the construction of the $k(k-1)$-type size-biased $\mu$-Galton-Watson tree $(\ddot Z^{(n)}_m)$, we see that the population $\ddot Z^{(n)}_n$ in
+	From the construction of the $k(k-1)$-type size-biased $\mu$-Galton-Watson tree 
+%	$(\ddot Z^{(n)}_m)$, we see that the population 
+	$(\ddot Z^{(n)}_m)_{0\le m\le n}$, we see that the population 
+	$\ddot Z^{(n)}_n$ in
    the $n$th generation can be separated into two parts: descendants
 	from the longer spine and descendants from the shorter spine.
 	Due to their construction,
@@ -289,7 +294,9 @@ Therefore, if $\dot Z_n/n$ converges weakly to, say, $\dot Y$,
 	then $\dot Y$ should satisfy \eqref{eq: x2 type size-biased equation for exponential distribution}, which, by Lemma \ref{lem: our equation}, suggests that \eqref{eq: convergence after size-biased} is true.
 	
 	It is interesting to compare
-	this view of exponential convergence with the methods used in \cite{geiger2000new} and \cite{lyons1995conceptual}.
+%	this view of exponential convergence with the methods 
+    this method of proving exponential convergence with the methods 
+	used in \cite{geiger2000new} and \cite{lyons1995conceptual}.
 	In \cite{lyons1995conceptual}, Lyons, Pemantle and Peres characterize the exponential distribution by a different
 but well-known $x$-type size-biased distributional equation:
 	A nonnegative random variable $Y$ with positive finite mean is exponentially distributed if and only if it satisfies that
@@ -310,11 +317,13 @@ $[0,1]$, which is independent of $\dot Y$.
 	then $Y$ should satisfy \eqref{eq: Lyons' distributional equation}, which suggests that $Y$ is exponentially distributed.
 	
 	In \cite{geiger2000new}, Geiger characterizes the exponential distribution by another distributional equation:
-		If $Y^{(1)}$ and $Y^{(2)}$ are independent copies of an exponential random variable $Y$, and $U$ is again an independent uniform random variable on $[0,1]$, then
+		If $Y^{(1)}$ and $Y^{(2)}$ are independent copies of an exponential random variable $Y$, %and $U$ is again an independent uniform random variable on $[0,1]$, then
+		and $U$ is  an independent uniform random variable on $[0,1]$, then
 \begin{equation}
 \label{eq: Geiger's equation}
 	Y	\overset{d} = U (Y^{(1)} + Y^{(2)}).
 \end{equation}
+({\bf Is the a characterization? Please check \cite{geiger2000new}}.)
 	Geiger then shows that for $(Z_n)$, conditioned on non-extinction at $n$,
 	the distribution of the generation of the most recent common ancestor (MRCA) of the particles at generation $n$ is asymptotically uniform among $\{0,1,\dots,n\}$ (a result due to \cite{Zubkov1975}, see also \cite{geiger1999elementary}), and there are asymptotically two children of
 the MRCA, each with at least 1 descendant in generation $n$.
@@ -327,7 +336,10 @@ the MRCA, each with at least 1 descendant in generation $n$.
 	where for each $m$, $Z_m^{(1)}$ and $Z_m^{(2)}$ are independent copies of $\{Z_m; P(\cdot | Z_m > 0)\}$.
 	And therefore, if $Y$ is the weak limit of $Z_n/n$ conditioned on $\{Z_n > 0\}$, then $Y$ should satisfy \eqref{eq: Geiger's equation}, which suggests that $Y$ is exponentially distributed.
 	
-	From this comparison, we see that all the methods mentioned above shares one similarity: They all establish the exponential convergence via some particular distributional equation.
+	From this comparison, we see that all the methods mentioned above 
+%	shares one similarity: They all establish the exponential convergence 
+  share one similarity: They all establish the exponential convergence 
+	via some particular distributional equation.
 	However, since the equations \eqref{eq: x2 type size-biased equation for exponential distribution}, \eqref{eq: Lyons' distributional equation} and \eqref{eq: Geiger's equation} are different, the actual way of proving the convergence varies.
 	In \cite{lyons1995conceptual}, an elegant tightness argument is made along with \eqref{eq: Lyons' insight}.
 	However, it seems that this tightness argument is not suitable for \eqref{eq: Geiger's insight}, due to a property that the conditional convergence for some subsequence $Z_{n_k}/n_k$ implies the convergence of $U \cdot \dot Z_{n_k}/n_k$,
@@ -594,7 +606,8 @@ $\dot A_k
 	:= \{u\in\dot T:| [\emptyset, u] \cap \dot V |=k\}.$
 	Then
 $\dot T
-	=\bigcup_{k=0}^n\dot A_k.$
+	=\bigcup_{k=0}^n\dot A_k.$ 
+	% Delete the last sentence?
 	This gives a natural decomposition of the $n$th generation population of $\dot T$,
 \begin{equation}
 \label{eq:generationseperation}
@@ -626,6 +639,7 @@ $\dot T
 	\ddot T
 	=	\Big ( \bigcup_{k=0}^n \ddot A^l_k\Big)  \cup \Big( \bigcup_{k=K_n+1}^n \ddot A^s_k \Big).
 \end{split}\end{equation*}
+%Delete the display above?
 	This gives a natural decomposition of the $n$th generation population of $\ddot T$,
 \begin{equation}\label{eq:rawtwospinedecomposition}
 		X_n(\ddot T)
@@ -698,6 +712,7 @@ survives up to generation $n$, and the left-most particle in the $n$-th generati
 	= \frac{\sigma^2}{2}.
 \]
 	Therefore,
+	%Give an equation number to the first display of this proof, then change `Therefore' to `Now combining eqn # with above, we get'
 \[\begin{split}
 	&\frac{1}{n P(Z_n > 0)}
 	= \frac{1}{n} E[Z_n | Z_n > 0]
