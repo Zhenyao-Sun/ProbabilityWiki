@@ -251,10 +251,11 @@ by the distribution of $X$ conditioned on $\{ X > 0\}$:
 \]
 	where $\dot Y$ is a $Y$-transform 
 	of the exponential random variable $Y$.
-	Indeed, since $E[Z_n] = 1$, \eqref{eq: convergence of conditional expectation} is equivalent to Theorem \ref{thm: Kolmogrov and Yaglom theorem}(\ref{thm:kolmogorov}); and under \eqref{eq: convergence of conditional expectation}, according to \eqref{eq: conditional and size-biased transform} and \eqref{eq: size-biased transform and conditional}, we can see \eqref{eq: convergence after size-biased} is equivalent to Theorem \ref{thm: Kolmogrov and Yaglom theorem}(\ref{thm:yaglom}).
-%new added
-	The $k(k-1)$-type size-biased tree will be only used to derive result \eqref{eq: convergence after size-biased}.
-%end new added
+	Indeed, since $E[Z_n] = 1$, \eqref{eq: convergence of conditional expectation} is equivalent to Theorem \ref{thm: Kolmogrov and Yaglom theorem}(\ref{thm:kolmogorov}); 
+%	and under \eqref{eq: convergence of conditional expectation}, 
+and assuming\eqref{eq: convergence of conditional expectation} , 
+	according to \eqref{eq: conditional and size-biased transform} and \eqref{eq: size-biased transform and conditional}, we can see \eqref{eq: convergence after size-biased} is equivalent to Theorem \ref{thm: Kolmogrov and Yaglom theorem}(\ref{thm:yaglom}).
+%	The $k(k-1)$-type size-biased tree will be only used to derive result \eqref{eq: convergence after size-biased}.
 	In Section \ref{sec: proofs}, for completeness, we will simplify 
 	the argument of \cite{geiger1999elementary} and \cite{VD},
 	and give a proof of Theorem \ref{thm: Kolmogrov and Yaglom theorem}(\ref{thm:kolmogorov}).
@@ -810,7 +811,7 @@ both $\mathbf e$-transforms of $\mathbf e$,
 \[
 	E[1-e^{-\lambda Y}]/ E[Y] = E[1-e^{-\lambda \mathbf e}]/ E[\mathbf e], \quad \lambda \geq 0.
 \]
-	Taking $\lambda \to \infty$, we get $E[Y] = E[\mathbf e]$. Therefore, $Y \overset{d} = \mathbf e$ as desired.
+	Letting $\lambda \to \infty$, we get $E[Y] = E[\mathbf e]$. Therefore, $Y \overset{d} = \mathbf e$ as desired.
 \end{proof}
 
 
