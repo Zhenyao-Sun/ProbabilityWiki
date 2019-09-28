@@ -140,7 +140,8 @@ and a comparison with the methods of \cite{geiger2000new} and \cite{lyons1995con
 	We think this new point of view of convergence to the exponential law provides an alternative insight on the classical Yaglom's theorem.
 
 	We now give a formal construction of our $k(k-1)$-type size-biased $\mu$-Galton-Watson tree.
-	Denote by $\ddot L$ an \emph{$L(L-1)$-transform} of $L$.
+	%Denote by $\ddot L$ an \emph{$L(L-1)$-transform} of $L$.
+	Denote by $\dot L$ an $L$-transform of $L$, and by $\ddot L$ an $L(L-1)$-transform of $L$.
 	Fix a generation number $n$ and pick a random generation number $K_n$ uniformly among $\{0,\dots,n-1\}$.
 	The \emph{$k(k-1)$-type size-biased $\mu$-Galton-Watson tree with height $n$} is then defined as a particle system such that:
 \begin{itemize}
@@ -185,9 +186,12 @@ and a comparison with the methods of \cite{geiger2000new} and \cite{lyons1995con
 
 \subsection{Methods.}
 \label{sec: Methods}
-	Suppose that $X$ is a non-negative 
-	random variable with $E[X] \in (0,\infty)$,
-	then its distribution conditioned on $\{ X > 0\}$ can be characterized by its conditional expectation $E[X|X>0]$ and its size-biased transform $\dot X$.
+	Suppose that $X$ is a non-negative random variable 
+	%with $E[X] \in (0,\infty)$,
+	with $E[X] \in (0,\infty)$.
+	%then 
+	Then
+	its distribution conditioned on $\{ X > 0\}$ can be characterized by its conditional expectation $E[X|X>0]$ and its size-biased transform $\dot X$.
 	In fact, for each $\lambda \geq 0$,
 \begin{equation}
 \label{eq: conditional and size-biased transform}
@@ -304,15 +308,23 @@ the MRCA, each with at least 1 descendant in generation $n$.
 	However, since the equations \eqref{eq: x2 type size-biased equation for exponential distribution}, \eqref{eq: Lyons' distributional equation} and \eqref{eq: Geiger's equation} are different, the actual way of proving the convergence varies.
 	In \cite{lyons1995conceptual}, an elegant tightness argument is made along with \eqref{eq: Lyons' insight}.
 	However, it seems that this tightness argument is not suitable for \eqref{eq: Geiger's insight}, due to a property that the conditional convergence for some subsequence $Z_{n_k}/n_k$ implies the convergence of $U \cdot \dot Z_{n_k}/n_k$,
-   	but does not implies the convergence of $Z^{(i)}_{ \floor{Un_k}}/Un_k, i=1, 2$.
-	Instead, a contraction type argument in the $L^2$-Wasserstein metric is used in Geiger \cite{geiger2000new}.
+   	%but does not implies 
+   	but does not imply
+   	the convergence of $Z^{(i)}_{ \floor{Un_k}}/Un_k, i=1, 2$.
+	Instead, a contraction type argument in the $L^2$-Wasserstein metric 
+	%is used in Geiger \cite{geiger2000new}.
+	is used in \cite{geiger2000new}.
 	
-	Due to similar reasons, in this note,
+	%Due to similar reasons, 
+	For similar reasons,
+	in this note,
 	to actually prove the exponential convergence using \eqref{eq: Our insight} and \eqref{eq: x2 type size-biased equation for exponential distribution}, some efforts also must be made.
 	We observe that the distributional equation \eqref{eq: Our insight} admits
     a so-called size-biased add-on structure, which is related to L\`evy's
-	theory of infinitely divisible distributions: Suppose that $X$ is a nonnegative random variable with $ a := E [X]\in (0,\infty)$,
-	then $X$ is infinitely divisible if and only if there exists a nonnegative random variable $A$ independent of $X$ such that $\dot X 	\overset{d} = X + A$.
+	theory of infinitely divisible distributions: Suppose that $X$ is a nonnegative random variable with 
+	%$ a := E [X]\in (0,\infty)$, then 
+	$ a := E [X]\in (0,\infty)$; then 
+	$X$ is infinitely divisible if and only if there exists a nonnegative random variable $A$ independent of $X$ such that $\dot X 	\overset{d} = X + A$.
 	In fact,
 	the Laplace exponent of $X$ can be expressed as
 \[
@@ -524,6 +536,9 @@ the MRCA, each with at least 1 descendant in generation $n$.
 \begin{equation}
 	\label{eq: second moment}
 	E [Z_n(Z_n-1)]= E [\dot Z_n - 1]= n\sigma^2.
+%new 
+	\qedhere
+%end new
 \end{equation}
 	\end{proof}
 
@@ -536,7 +551,8 @@ the MRCA, each with at least 1 descendant in generation $n$.
 \begin{prop}\label{prop: size-biased add-on of size-biased tree }
 	Let $(\dot Z_m)_{0 \leq m \leq n}$ be the population of a size-biased $\mu$-Galton watson tree and $(\ddot Z^{(n)}_m)_{0 \leq m \leq n}$ be the population of a $k(k-1)$-type size-biased $\mu$-Galton-Watson tree with height $n$.
 	Suppose that $\mu$ satisfies \eqref{eq:mean} and \eqref{eq:variance}.
-	Then, we have
+	%Then, we have
+	Then,
 \[
 	E [ e^{- \lambda \ddot Z_n^{(n)}} ]
 	= E [e^{-\lambda \dot Z_n}] E[g(\lambda, \floor{Un})e^{-\lambda \dot Z_{\floor{Un}}}],
@@ -622,7 +638,9 @@ $\dot A_k
 \begin{proof}[Proof of Theorem \ref{thm: Kolmogrov and Yaglom theorem}(\ref{thm:kolmogorov})]
 	Denote by $B_n^j$ the event that the Galton-Watson process 
     $(Z_n)_{n\geq 0}$ 
-survives up to generation $n$, and the left-most particle in the $n$-th generation is a descendant of $j$th particle of the first generation.
+survives up to generation $n$, and the left-most particle in the $n$-th generation is 
+	%a descendant of $j$th particle of the first generation.
+	a descendant of the $j$th particle of the first generation.
 	Write $q_n = P[Z_n = 0] = f^{(n)}(0)$ and $p_n = 1- q_n$ where $f$ is the probability generating function of the offspring distribution $\mu$.
 	Then
 \begin{equation}
@@ -637,7 +655,8 @@ survives up to generation $n$, and the left-most particle in the $n$-th generati
 	\\&\quad = E[Z_{n-1}|Z_{n-1}> 0]  + \frac{p_{n-1}}{p_n}\sum_{k=1}^\infty \sum_{j=1}^k \mu(k) q_{n-1}^{j-1}(k-j).
 \end{split}
 \end{equation}
-	The criticality implies that $q_n \uparrow 1$ while $n \to \infty$, and that
+	%The criticality implies that $q_n \uparrow 1$ while $n \to \infty$, and that
+	The criticality implies that $q_n \uparrow 1$ as $n \to \infty$, and that
 \[
 	\frac{p_n}{p_{n-1}} = \frac{1- f^{(n)}(0)}{1-f^{(n-1)}(0)} = \frac{1- f(q_{n-1})}{1-q_{n-1}} \xrightarrow[n \to \infty]{} f'(1) = 1.
 \]
@@ -648,12 +667,20 @@ survives up to generation $n$, and the left-most particle in the $n$-th generati
 	=  \sum_{k=1}^\infty \mu(k) k(k-1)/2
 	= \frac{\sigma^2}{2}.
 \]
-	Now combining \eqref{eq: iterate of conditional expectation} with above, we get
+	%Now combining \eqref{eq: iterate of conditional expectation} with above, we get
+	Now combining \eqref{eq: iterate of conditional expectation} with the above, we get
+%\[\begin{split}
+	%&\frac{1}{n P(Z_n > 0)}
+	%= \frac{1}{n} E[Z_n | Z_n > 0]
+	%= \frac{1}{n}E[Z_0| Z_0 > 0] + \frac{1}{n} \sum_{m = 1}^n \frac{p_{m-1}}{p_m}\sum_{k=1}^\infty \sum_{j=1}^k \mu(k) q_{m-1}^{j-1}(k-j)
+	%\\&\quad \xrightarrow[n \to \infty]{} \frac{\sigma^2}{2}.
+%\end{split}\]
 \[\begin{split}
-	&\frac{1}{n P(Z_n > 0)}
-	= \frac{1}{n} E[Z_n | Z_n > 0]
-	= \frac{1}{n}E[Z_0| Z_0 > 0] + \frac{1}{n} \sum_{m = 1}^n \frac{p_{m-1}}{p_m}\sum_{k=1}^\infty \sum_{j=1}^k \mu(k) q_{m-1}^{j-1}(k-j)
-	\\&\quad \xrightarrow[n \to \infty]{} \frac{\sigma^2}{2}.
+	\frac{1}{n P(Z_n > 0)}
+	&= \frac{1}{n} E[Z_n | Z_n > 0]
+	\\&= \frac{1}{n}E[Z_0| Z_0 > 0] + \frac{1}{n} \sum_{m = 1}^n \frac{p_{m-1}}{p_m}\sum_{k=1}^\infty \sum_{j=1}^k \mu(k) q_{m-1}^{j-1}(k-j)
+	\\& \xrightarrow[n \to \infty]{} \frac{\sigma^2}{2}.
+	\qedhere
 \end{split}\]
 \end{proof}
 
@@ -719,7 +746,8 @@ survives up to generation $n$, and the left-most particle in the $n$-th generati
 	< \infty,
 \end{equation}
 with the convention $\inf \emptyset=\infty$.
-	Then, for each $\lambda > 0$,
+	%Then, for each $\lambda > 0$,
+	Then, for each $\lambda \geq 0$,
 \[
 	F(\rho + \lambda)
 	= \frac{1}{c} \int_0^1 du \int_0^{\rho +\lambda} F(us) ds
