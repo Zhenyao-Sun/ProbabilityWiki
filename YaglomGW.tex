@@ -1,29 +1,3 @@
-%%%----Versions-----------------------------
-%---YaglomGW21.tex 2018/5/13  by Zhenyao-------
-%---YaglomGW20.tex 2018/5/12  by Renming-------
-%---YaglomGW19.tex 2018/5/11  by Zhenyao-------
-%---YaglomGW18.tex 2018/5/10  by Renming-------
-%---YaglomGW17.tex 2018/5/8  by Yanxia--------
-%---YaglomGW16.tex 2018/5/7  by Zhenyao--------
-%---YaglomGW15.tex 2018/3/9 submitted to PCE and Arxiv.org by Zhenyao
-%---YaglomGW15.tex 2018/3/7 by Zhenyao----
-%---YaglomGW14.tex 2018/3/6 by Renming---
-%---YaglomGW13.tex 2018/3/6 by Yanxia---
-%---YaglomGW12.tex 2018/3/5 by Zhenyao---
-%---YaglomGW11.tex 2018/3/3 by Renming---
-%---YaglomGW10.tex 2018/3/3 by Zhenyao---
-%---YaglomGW.tex 2017/6/21 submited to Arxiv.org by Zhenyao---
-%---YaglomGW.pdf 2017/4/21 submitted to JAP by Zhenyao---
-%---YaglomGW9.tex 2017/4/21 by Zhenyao-----------------
-%---YaglomGW8.tex 2017/4/21 by Renming-----------------
-%---YaglomGW7.tex 2017/4/21 by Yanxia-----------------
-%---YaglomGW6.tex 2017/4/19 by Renming-----------------
-%---YaglomGW5.tex 2017/4/18 by Yanxia---------------
-%---YaglomGW4.tex 2017/4/16 by Zhenyao---------------
-%---YaglomGW3.tex 2017/4/11 by Renming-----------------
-%---YaglomGW2.tex 2017/4/11 by Yanxia-----------------
-%---YaglomGW.tex 2017/4/6 by Zhenyao-----------------
-%%%----Documentstyles-----------------------
 \documentclass[12pt,a4paper]{amsart}
 \setlength{\textwidth}{\paperwidth}\addtolength{\textwidth}{-2in}\calclayout
 \usepackage{hyperref}
@@ -33,17 +7,14 @@
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
-%%%----Environments------------------------
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{prop}[thm]{Proposition}
 \numberwithin{equation}{section}
 
-%%%---------Top matter----------------
 \title[A 2-spine decomposition and Yaglom's theorem]
 {\large A 2-spine Decomposition of the Critical Galton-Watson Tree and a Probabilistic Proof of Yaglom's Theorem}
 \author{Yan-Xia Ren, Renming Song and Zhenyao Sun}
-%-------Yan-Xia Ren--------------
 \address{
 	Yan-Xia Ren\\
 	School of Mathematical Sciences \& Center for Statistical Science\\
@@ -51,7 +22,6 @@
 	P. R. China, 100871}
 \email{yxren@math.pku.edu.cn}
 \thanks{The research of Yan-Xia Ren is supported in part by NSFC (Grant Nos. 11671017 and 11731009)}
-%--------Renming Song------------
 \address{
 	Renming Song\\
 	Dept of Mathematics\\
@@ -59,7 +29,6 @@
 	Urbana, IL 61801}
 \email{rsong@illinois.edu}
 \thanks{The research of Renming Song is supported in part by the Simons Foundation (\#429343, Renming Song)}
-%--------Zhenyao Sun------------
 \address{
 	Zhenyao Sun\\
 	School of Mathematical Sciences\\
@@ -67,11 +36,9 @@
 	Beijing, P. R. China, 100871}
 \email{zhenyao.sun@pku.edu.cn}
 \thanks{Zhenyao Sun is supported by the China Scholarship Council. Corresponding author.}
-%------Footnotes----------------------
 \keywords{
 	Galton-Watson process, Galton-Watson tree, spine decomposition, Yaglom's theorem, martingale change of measure}
 \subjclass[2010]{60J80, 60F05}
-%%%----Main-------------------------------
 \begin{document}
 \begin{abstract}
 	In this note  we propose a two-spine decomposition of the critical Galton-Watson tree and use this decomposition to give a probabilistic proof of Yaglom's theorem.
@@ -230,12 +197,6 @@ and a comparison with the methods of \cite{geiger2000new} and \cite{lyons1995con
 	\\&\quad = \frac{1}{P(X>0)}\int_0^\lambda E[Xe^{-s X}]ds = E[X|X>0]\int_0^\lambda E[e^{-s \dot X}]ds.
 \end{split}
 \end{equation}
-	Conversely, the distribution of $\dot X$ can be characterized 
-by the distribution of $X$ conditioned on $\{ X > 0\}$: 
-\[\label{eq: size-biased transform and conditional}
-	E[e^{- \lambda \dot X}] 
-	= \frac{E[Xe^{-\lambda X}| X>0]}{E[X| X>0]}.
-\]
 	As a consequence,  
 	Theorem \ref{thm: Kolmogrov and Yaglom theorem}	is equivalent to
 \begin{equation}
@@ -252,10 +213,8 @@ by the distribution of $X$ conditioned on $\{ X > 0\}$:
 	where $\dot Y$ is a $Y$-transform 
 	of the exponential random variable $Y$.
 	Indeed, since $E[Z_n] = 1$, \eqref{eq: convergence of conditional expectation} is equivalent to Theorem \ref{thm: Kolmogrov and Yaglom theorem}(\ref{thm:kolmogorov}); 
-%	and under \eqref{eq: convergence of conditional expectation}, 
-and assuming\eqref{eq: convergence of conditional expectation} , 
-	according to \eqref{eq: conditional and size-biased transform} and \eqref{eq: size-biased transform and conditional}, we can see \eqref{eq: convergence after size-biased} is equivalent to Theorem \ref{thm: Kolmogrov and Yaglom theorem}(\ref{thm:yaglom}).
-%	The $k(k-1)$-type size-biased tree will be only used to derive result \eqref{eq: convergence after size-biased}.
+and assuming \eqref{eq: convergence of conditional expectation}, 
+	according to \eqref{eq: conditional and size-biased transform}, we can see \eqref{eq: convergence after size-biased} is equivalent to Theorem \ref{thm: Kolmogrov and Yaglom theorem}(\ref{thm:yaglom}).
 	In Section \ref{sec: proofs}, for completeness, we will simplify 
 	the argument of \cite{geiger1999elementary} and \cite{VD},
 	and give a proof of Theorem \ref{thm: Kolmogrov and Yaglom theorem}(\ref{thm:kolmogorov}).
@@ -552,7 +511,7 @@ the MRCA, each with at least 1 descendant in generation $n$.
     \{(X_m( \mathbf t ))_{0\le m\le n}; {\mathbf G}_n\}  \overset{d}{=} (Z_m)_{0\le m\le n}
 \quad    \mbox{and} \quad \{(X_m( \mathbf t ))_{0\le m\le n};\ddot{\mathbf G}_n\}  \overset{d}{=} (\ddot Z_m)_{0\le m\le n}.
     \]
-    According to \eqref{eq:k(k-1)typesizebiasedGWmeasure}, for any bounded Borel function $g$ on $\mathbb N_0^n$, we can then verify that
+    According to \eqref{eq:k(k-1)typesizebiasedGWmeasure}, for any bounded Borel function $g$ on $\mathbb N_0^n$, we can verify that
 \begin{equation} \label{eq:proofofchangeofmeasure}
 \begin{split}
 	&E [ g ( \ddot Z_1^{(n)}, \dots, \ddot Z_n^{(n)})]
@@ -859,7 +818,6 @@ $M(\lambda) := \limsup_{n\to \infty} | E[ e^{- \lambda \frac{\dot Z_n }{n}}] - E
 
 \noindent
 {\bf Acknowledgements:}  We thank the referee for helpful comments on the first version of this paper.
-%%%------Bibliography-------------------
 \vspace{.1in}
 \begin{thebibliography}{99}
 \bibitem{AN}
